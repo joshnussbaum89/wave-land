@@ -1,0 +1,25 @@
+---
+export interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+---
+
+<article class:list={['text-content', className]}>
+  <slot />
+</article>
+
+<style>
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 450px;
+
+    /* Make sure text content is centered */
+    margin: 0 auto;
+    text-align: center;
+  }
+</style>

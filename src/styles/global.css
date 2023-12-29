@@ -48,7 +48,7 @@
 
   /* Animations */
 
-  --transition-normal: 0.3s ease-in-out;
+  --transition-normal: 0.2s ease-in-out;
   --transition-long: 0.6s ease-in-out;
   --transition-natural: cubic-bezier(0.42, 0.97, 0.52, 1.29);
 }
@@ -175,7 +175,16 @@ ul {
 }
 
 section {
+  min-height: 100vh;
   margin: var(--section-spacing-base) auto var(--section-spacing-large);
+}
+
+nav,
+header,
+main,
+footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .bold {

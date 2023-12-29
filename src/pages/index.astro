@@ -2,10 +2,12 @@
 import Layout from '../layouts/Layout.astro'
 import ScrollingNavigation from '../components/ScrollingNavigation.astro'
 import Hero from '../components/sections/Hero.astro'
+import Introduction from '../components/sections/Introduction.astro'
 import About from '../components/sections/About.astro'
 
 const sections = [
   { name: 'Top', id: '#' },
+  { name: 'Introduction', id: '#introduction' },
   { name: 'About', id: '#about' },
   { name: 'Portfolio', id: '#portfolio' },
   { name: 'FAQ', id: '#faq' },
@@ -19,6 +21,7 @@ const sections = [
   <ScrollingNavigation sections={sections} />
   <Hero />
   <main>
+    <Introduction />
     <About />
   </main>
 </Layout>

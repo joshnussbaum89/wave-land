@@ -1,0 +1,75 @@
+---
+import Icon from 'astro-icon'
+---
+
+<!-- TODO: replace with real company logos -->
+<section class="marquee site-section">
+  <div class="marquee-container">
+    <Icon name="astro" />
+    <Icon name="typescript" />
+    <Icon name="sanity" />
+    <Icon name="nextjs" />
+    <Icon name="astro" />
+    <Icon name="typescript" />
+    <Icon name="sanity" />
+    <Icon name="nextjs" />
+  </div>
+
+  <div class="marquee-container">
+    <Icon name="astro" />
+    <Icon name="typescript" />
+    <Icon name="sanity" />
+    <Icon name="nextjs" />
+    <Icon name="astro" />
+    <Icon name="typescript" />
+    <Icon name="sanity" />
+    <Icon name="nextjs" />
+  </div>
+</section>
+
+<style>
+  .marquee,
+  .marquee-container {
+    display: flex;
+    gap: var(--section-spacing-base);
+  }
+
+  .marquee {
+    overflow-x: hidden;
+    mask-image: linear-gradient(
+      to right,
+      hsl(0 0% 0% / 0),
+      hsl(0 0% 0% / 1) 20%,
+      hsl(0 0% 0% / 1) 80%,
+      hsl(0 0% 0% / 0)
+    );
+    user-select: none;
+    opacity: 0.5;
+  }
+
+  .marquee-container {
+    flex: 0 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    min-width: 100%;
+    z-index: 1;
+    animation: marquee 30s linear 0s infinite;
+  }
+
+  .marquee-container [astro-icon] {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      /* This prevents "skipping" on animation reset */
+      transform: translateX(calc(-100% - var(--section-spacing-base)));
+    }
+  }
+</style>

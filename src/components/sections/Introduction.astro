@@ -1,0 +1,41 @@
+---
+import ImageWithTextContent from '../ImageWithTextContent.astro'
+import SiteCta from '../SiteCta.astro'
+import project from '../../assets/project.png'
+---
+
+<section id="introduction" class="introduction site-section">
+  <ImageWithTextContent
+    class="image-with-text-content-custom"
+    image={project}
+    imageAlt="Moonbelly website on desktop and mobile"
+  >
+    <h2>No Nonsense, Just Great Websites</h2>
+    <p>
+      Beautifully responsive, high-performance websites, thoughtfully built with modern technologies
+      and a creative touch.
+    </p>
+    <p>Let us handle the hard stuff so that you can focus on what you do best.</p>
+    <SiteCta class="cta" text="View Portfolio" url="/#portfolio" />
+  </ImageWithTextContent>
+</section>
+
+<style>
+  .introduction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-with-text-content-custom p {
+    max-width: 350px;
+  }
+
+  .image-with-text-content-custom .cta {
+    margin-top: 1rem;
+  }
+
+  .image-with-text-content-custom p:nth-of-type(2) {
+    color: var(--color-grey-300);
+  }
+</style>
