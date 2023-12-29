@@ -1,0 +1,191 @@
+---
+import { Icon } from 'astro-icon'
+
+// Style navigation link based on current path
+const currentPath = Astro.url.pathname
+---
+
+<nav class="navigation" data-current-url={currentPath}>
+  <ul>
+    <li data-path="home"><a href="/" data-astro-prefetch>Home</a></li>
+    <li data-path="portfolio">
+      <a href="/portfolio" data-astro-prefetch>Portfolio</a>
+    </li>
+    <li data-path="services"><a href="/services" data-astro-prefetch>Services</a></li>
+    <li data-path="contact"><a href="/contact" data-astro-prefetch>Contact</a></li>
+  </ul>
+  <!-- add tab index -->
+  <Icon name="logo" tabindex="0" />
+</nav>
+
+<style>
+  .navigation {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    gap: 1rem;
+    transition: background-color var(--transition-normal);
+  }
+
+  @media (min-width: 768px) {
+    .navigation {
+      top: 3rem;
+      right: 3rem;
+      left: auto;
+      bottom: auto;
+      height: auto;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: row;
+      border: 1px solid transparent;
+      border-radius: 4rem;
+    }
+  }
+
+  .navigation.active {
+    height: 100vh;
+    background-color: var(--color-foreground-transparent);
+    backdrop-filter: saturate(180%) blur(5px);
+    z-index: 100;
+  }
+
+  @media (min-width: 768px) {
+    .navigation.active {
+      border: 1px solid var(--color-grey-100);
+      height: auto;
+    }
+  }
+
+  .navigation ul {
+    display: flex;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    font-size: var(--size-lg);
+    font-weight: 300;
+    transition: opacity var(--transition-normal);
+  }
+
+  @media (min-width: 768px) {
+    .navigation ul {
+      padding: 2rem;
+      font-size: clamp(var(--size-sm), 3vw, var(--size-base));
+    }
+  }
+
+  .navigation.active ul {
+    opacity: 1;
+    visibility: visible;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  @media (min-width: 768px) {
+    .navigation.active ul {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      position: static;
+      transform: none;
+    }
+  }
+
+  .navigation ul li {
+    transition: color var(--transition-normal);
+  }
+
+  .navigation ul li:hover {
+    color: var(--color-primary-200);
+  }
+
+  [astro-icon='logo'] {
+    width: clamp(5rem, 10vw, 6rem);
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    stroke: var(--color-background);
+    stroke-width: 1rem;
+    stroke-linecap: round;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+  }
+
+  @media (min-width: 768px) {
+    [astro-icon='logo'] {
+      position: static;
+    }
+  }
+
+  [astro-icon='logo']:hover {
+    stroke: var(--color-primary-200);
+    stroke-width: 1.25rem;
+  }
+
+  .navigation.active [astro-icon='logo'] {
+    stroke: var(--color-background);
+  }
+
+  .navigation.active [astro-icon='logo']:hover {
+    stroke: var(--color-primary-200);
+  }
+
+  .navigation[data-current-url='/'] li[data-path='home'],
+  .navigation[data-current-url^='/portfolio'] li[data-path='portfolio'],
+  .navigation[data-current-url^='/services'] li[data-path='services'],
+  .navigation[data-current-url^='/contact'] li[data-path='contact'] {
+    color: var(--color-primary-200);
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    // Handle navigation toggle
+    const body = document.querySelector('body')
+    const navigation = document.querySelector('.navigation')
+    const logo = document.querySelector('[astro-icon="logo"]')
+    const navItems = document.querySelectorAll('.navigation li')
+    let overlayDisplayed = false
+
+    function handleMobileNavigation() {
+      overlayDisplayed = !overlayDisplayed
+      navigation?.classList.toggle('active')
+
+      if (window.innerWidth < 768) {
+        body?.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
+      }
+    }
+
+    function handleMobileNavigationOnResize() {
+      if (window.innerWidth >= 768) {
+        overlayDisplayed = false
+        body?.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
+        navigation?.classList.remove('active')
+      }
+    }
+
+    // Accessibility
+    document.addEventListener('keyup', (event) => {
+      if (event.code === 'Escape') {
+        handleMobileNavigation()
+      }
+    })
+
+    document.addEventListener('keyup', (event) => {
+      if (event.code === 'Enter') {
+        handleMobileNavigation()
+      }
+    })
+
+    logo?.addEventListener('click', handleMobileNavigation)
+    window.addEventListener('resize', handleMobileNavigationOnResize)
+    navItems.forEach((item) => item.addEventListener('click', handleMobileNavigation))
+  })
+</script>

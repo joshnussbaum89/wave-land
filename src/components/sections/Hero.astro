@@ -1,0 +1,40 @@
+---
+import { Icon } from 'astro-icon'
+import SiteCta from '../SiteCta.astro'
+---
+
+<header id="hero" class="hero site-section">
+  <div class="hero-info">
+    <Icon name="title" />
+    <p>Web Development Agency Helping Artists & Creatives Build Their Digital Presence</p>
+    <SiteCta text="Create Your Website" url="/contact" />
+  </div>
+</header>
+
+<style>
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 12rem);
+    text-align: center;
+  }
+
+  .hero.site-section {
+    opacity: 1;
+  }
+
+  .hero-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    max-width: 50rem;
+  }
+
+  .hero-info p {
+    margin-bottom: 1rem;
+    font-size: clamp(var(--size-base), 4vw, var(--size-lg));
+  }
+</style>

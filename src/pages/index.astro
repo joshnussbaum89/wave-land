@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ScrollingNavigation from '../components/ScrollingNavigation.astro'
+import Hero from '../components/sections/Hero.astro'
+import About from '../components/sections/About.astro'
+
+const sections = [
+  { name: 'Top', id: '#' },
+  { name: 'About', id: '#about' },
+  { name: 'Portfolio', id: '#portfolio' },
+  { name: 'FAQ', id: '#faq' },
+]
+---
+
+<Layout
+  title="Wave Land Web | Creative Web Design & Development"
+  description="Wave Land Web is a creative web design and development agency based in Madison, WI. We specialize in building beautiful, responsive, user-focused websites for artists and small businesses."
+>
+  <ScrollingNavigation sections={sections} />
+  <Hero />
+  <main>
+    <About />
+  </main>
+</Layout>

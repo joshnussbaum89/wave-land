@@ -1,0 +1,148 @@
+---
+import { Picture } from 'astro:assets'
+import Icon from 'astro-icon'
+import SectionHeader from '../SectionHeader.astro'
+import SiteCta from '../SiteCta.astro'
+import joshWoods from '../../assets/josh-woods.webp'
+---
+
+<section id="about" class="about site-section">
+  <SectionHeader text="Who Is Wave Land Web?" />
+  <div class="about-bio">
+    <p>
+      Hey! I'm Josh. I've always been a dreamer with a hunger to create things. I spent the earlier
+      part of my life focusing on music - playing guitar, recording records, and performing with my
+      friends. These formative years exploring my musical and artistic voice inexplicably led me to
+      the vast, terrifying beauty that is the modern web, and learning to build things with code.
+    </p>
+    <p>
+      After a few years of working with some amazing clients and building tons of personal projects,
+      I began to notice that many people struggle with decision fatigue when they have website
+      needs, and finding the right resources to build their own websites can be overwhelming. I
+      created Wave Land Web to simplify this process and to empower creatives and small businesses
+      with the resources and knowledge necessary to thrive online and create websites that bring
+      their brand and personality to life.
+    </p>
+    <p class="bold">Click the link below to schedule a free 15-minute consultation 📅</p>
+    <SiteCta
+      text="Let's Connect"
+      url="https://calendly.com/wavelandweb/15-min-meeting"
+      openInNewTab={true}
+      class="cta"
+    />
+  </div>
+  <div class="about-content">
+    <Icon name="curved-text" />
+    <Picture
+      src={joshWoods}
+      formats={['avif', 'webp']}
+      alt="Josh Nussbaum on a tree stump on a hiking trail"
+    />
+    <div class="about-content-info">
+      <h3>What We Do</h3>
+      <ul class="services">
+        <li class="tag">User-focused Web Design</li>
+        <li class="tag">Custom Web Development</li>
+      </ul>
+
+      <h3>What We Use</h3>
+      <ul class="technologies">
+        <li>
+          <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">
+            <Icon name="typescript" />
+          </a>
+        </li>
+        <li>
+          <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">
+            <Icon name="astro" />
+          </a>
+        </li>
+        <li>
+          <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">
+            <Icon name="nextjs" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.sanity.io/" target="_blank" rel="noopener noreferrer">
+            <Icon name="sanity" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">
+            <Icon name="figma" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    margin-bottom: 8rem;
+    text-align: center;
+  }
+
+  .about-bio {
+    max-width: 750px;
+    margin: 0 auto 2rem;
+  }
+
+  .about-bio p {
+    margin-bottom: 1rem;
+  }
+
+  .about-bio .cta {
+    margin: 2rem auto var(--section-spacing-base);
+  }
+
+  .about-content {
+    display: grid;
+    align-items: center;
+    gap: 6rem;
+  }
+
+  @media (min-width: 1024px) {
+    .about-content {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .about-content [astro-icon='curved-text'] {
+    max-height: 425px;
+  }
+
+  .about-content img {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .about-content-info {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .about-content-info h3 {
+    margin-bottom: 1rem;
+  }
+
+  .about-content-info .services {
+    margin-bottom: 3rem;
+  }
+
+  .about-content-info .services .tag {
+    margin-bottom: 0.5rem;
+  }
+
+  .about-content-info .technologies {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .about-content-info .technologies li {
+    width: 4rem;
+  }
+</style>

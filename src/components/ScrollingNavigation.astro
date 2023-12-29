@@ -1,0 +1,115 @@
+---
+export interface Props {
+  sections: { name: string; id: string }[]
+}
+
+const { sections } = Astro.props
+---
+
+<div class="scrolling-navigation">
+  <div class="scrolling-navigation-dots">
+    {
+      sections?.map((section, index) => (
+        <a
+          class:list={['dot', { active: index === 0 }]}
+          href={section.id}
+          data-index={index}
+          aria-label={section.name}
+          title={section.name}
+          data-astro-reload="false"
+        />
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .scrolling-navigation {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 2;
+  }
+
+  @media (min-width: 768px) {
+    .scrolling-navigation {
+      right: 3rem;
+      bottom: 4rem;
+    }
+  }
+
+  .scrolling-navigation-dots {
+    width: 20px;
+  }
+
+  .scrolling-navigation-dots .dot {
+    display: block;
+    height: 20px;
+    width: 100%;
+    background-color: var(--color-foreground);
+    border: 2px solid var(--color-background);
+    border-radius: 50%;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+  }
+
+  .scrolling-navigation-dots .dot:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  .scrolling-navigation-dots .dot.active {
+    background-color: var(--color-primary-200);
+    box-shadow: var(--box-shadow-light);
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const navigationDots = document.querySelectorAll('.scrolling-navigation .dot')
+    let activeDotIndex = 0
+    let currentDotIndex = 0
+
+    function handleActiveNavigationDotStyling(element: HTMLElement | null) {
+      // Prevent removing/adding class unnecessarily
+      if (activeDotIndex === currentDotIndex) return
+
+      // Active dot index increased (scrolling down)
+      // Style newly active dot
+      navigationDots.forEach((dot) => dot.classList.remove('active'))
+      element?.classList.add('active')
+
+      // Update current dot index
+      currentDotIndex = activeDotIndex
+    }
+
+    function handleActiveElementsOnScroll() {
+      if (!window.IntersectionObserver) return console.log('IntersectionObserver not supported')
+
+      const sections = [...document.querySelectorAll('.site-section')]
+
+      const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const section = entry.target
+            const index = sections.indexOf(section)
+            activeDotIndex = index
+          }
+        })
+      }, options)
+
+      sections.forEach((section) => observer.observe(section))
+
+      handleActiveNavigationDotStyling(
+        document.querySelector(`.dot[data-index="${activeDotIndex}"]`)
+      )
+    }
+
+    document.addEventListener('scroll', handleActiveElementsOnScroll)
+  })
+</script>

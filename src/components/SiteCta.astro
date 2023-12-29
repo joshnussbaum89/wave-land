@@ -1,0 +1,22 @@
+---
+export interface Props {
+  text: string
+  url: string
+  class?: string
+  openInNewTab?: boolean
+}
+
+const { text, url, class: className, openInNewTab } = Astro.props
+const target = openInNewTab ? '_blank' : null
+const rel = openInNewTab ? 'noopener noreferrer' : null
+---
+
+<a class={`${className} site-cta`} href={url} target={target} rel={rel} aria-label={text}>{text}</a>
+
+<style>
+  a {
+    padding: 1rem 2rem;
+    font-size: clamp(var(--size-base), 4vw, var(--size-lg));
+    text-align: center;
+  }
+</style>

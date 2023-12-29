@@ -1,0 +1,56 @@
+---
+const currentPath = Astro.url.pathname
+---
+
+<div id="desktop-nav" class="desktop-nav" data-current-url={currentPath}>
+  <ul>
+    <li><a href="/" aria-label="Home">Home</a></li>
+    <li><a href="/pricing" aria-label="Pricing">Pricing</a></li>
+    <li><a href="/blog" aria-label="Blog">Blog</a></li>
+    <li><a href="/contact" aria-label="Contact">Contact</a></li>
+  </ul>
+</div>
+
+<style>
+  .desktop-nav {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .desktop-nav {
+      display: block;
+      z-index: 2;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .desktop-nav ul {
+      display: flex;
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .desktop-nav li {
+      font-size: var(--size-base);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .desktop-nav li a {
+      transition: all var(--transition-normal);
+    }
+
+    .desktop-nav li a:hover {
+      color: var(--color-primary-200);
+    }
+  }
+
+  /* Active link styling */
+  .desktop-nav[data-current-url='/'] a[aria-label='Home'],
+  .desktop-nav[data-current-url^='/pricing'] a[aria-label='Pricing'],
+  .desktop-nav[data-current-url^='/blog'] a[aria-label='Blog'],
+  .desktop-nav[data-current-url^='/contact'] a[aria-label='Contact'] {
+    color: var(--color-primary-200);
+  }
+</style>

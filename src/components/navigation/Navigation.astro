@@ -1,0 +1,40 @@
+---
+import Icon from 'astro-icon'
+import Desktop from './Desktop.astro'
+import Mobile from './Mobile.astro'
+---
+
+<nav>
+  <a href="/" class="logo" title="Wave Land Web" aria-label="Wave Land Web">
+    <Icon name="logo" />
+  </a>
+  <Desktop />
+  <Mobile />
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .logo {
+    position: relative;
+    z-index: 4;
+  }
+
+  .logo [astro-icon] {
+    width: clamp(5rem, 10vw, 6rem);
+    stroke: var(--color-background);
+    stroke-width: 1rem;
+    transition: all var(--transition-normal);
+  }
+
+  .logo [astro-icon]:hover {
+    stroke: var(--color-primary-200);
+    stroke-width: 1.25rem;
+  }
+</style>

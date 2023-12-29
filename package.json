@@ -1,0 +1,22 @@
+{
+  "name": "wave-land-web-redesign",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.4",
+    "@astrojs/sitemap": "^3.0.4",
+    "@sentry/astro": "^7.86.0",
+    "@spotlightjs/astro": "^0.0.26",
+    "astro": "^4.0.8",
+    "astro-icon": "^0.8.2",
+    "autoprefixer": "^10.4.16",
+    "typescript": "^5.3.3"
+  }
+}
