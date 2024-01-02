@@ -1,0 +1,551 @@
+---
+import { Picture } from 'astro:assets'
+import Icon from 'astro-icon'
+import SectionHeader from '../SectionHeader.astro'
+import GlowingCircle from '../animations/GlowingCircle.astro'
+
+// Moonbelly Makes
+import moonbellyMainImage from '../../assets/moonbelly.webp'
+import moonbellyMacbookImage from '../../assets/macbook-moonbelly.png'
+import moonbellyIphoneImage from '../../assets/iphone-moonbelly.png'
+import moonbellySanityImage from '../../assets/moonbelly-sanity.png'
+
+// Supervoid TV
+import supervoidMainImage from '../../assets/supervoid.webp'
+import supervoidMacbookImage from '../../assets/macbook-supervoid.png'
+import supervoidIphoneImage from '../../assets/iphone-supervoid.png'
+
+// Robby Webb
+import robbyWebbMainImage from '../../assets/robby-webb.webp'
+import robbyWebbMacbookImage from '../../assets/macbook-robby-webb.png'
+import robbyWebbIphoneImage from '../../assets/iphone-robby-webb.png'
+
+// Style Guide Images
+import supervoidStyleGuideImage from '../../assets/supervoid-style-guide.png'
+import robbyWebbStyleGuideImage from '../../assets/robby-webb-style-guide.png'
+
+const projects = [
+  {
+    id: 1,
+    title: 'Moonbelly Makes',
+    description: 'Website build for Moonbelly Makes, a DIY and recipe blog by Katrina Atkin.',
+    mainImage: moonbellyMainImage,
+    alt: 'Moonbelly Makes website screenshot showing post preview cards',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Sanity CMS'],
+    liveSite: 'https://moonbellymakes.com',
+    github: 'https://github.com/joshnussbaum89/moonbelly-makes',
+    caseStudy: [
+      {
+        title: 'Introduction',
+        description:
+          'Moonbelly Makes is a DIY and recipe blog built for content generation and user engagement. Katrina, the owner of Moonbelly Makes, uses this site as the main hub for her business. With this site, she is able to build her brand, share the incredible projects that she builds from scratch on her blog, and connect with her audience by linking to YouTube and social media.',
+        image: moonbellyMacbookImage,
+      },
+      {
+        title: 'Project Objectives',
+        description:
+          'Our primary goal in working with Moonbelly Makes was to build a beautiful website that would allow them as a content creator to find their voice and share their creativity with the world. In addition to being fully responsive and accessible on all devices, the site needed to be easy to navigate and allow users to easily find the content they are looking for. Content would be updated frequently via blog posts, so Moonbelly would need a content management system (CMS) to handle updates.',
+        image: moonbellyIphoneImage,
+      },
+      {
+        title: 'Key Features and Solutions',
+        description:
+          "Moonbelly Makes is powered by Sanity CMS on the backend. This is a free and open-source service that allows clients to create content, pages, blog posts and more without having to write any code. With Sanity, we were able build a completely custom, headless blog website that features search functionality, dynamic content, and a commenting engine that invites users to comment on blog posts which improves user engagement and SEO. Moonbelly also needed their site to be fast. This is why we chose to use Next.js as the frontend framework. Next.js is a React framework that allows us to build static sites that are fast and SEO friendly. All styling is custom CSS tailored to Moonbelly's exact specifications and branding.",
+        image: moonbellySanityImage,
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Supervoid TV',
+    description:
+      'Website build for Supervoid TV, Philadelphia studio specializing in music videos, stage visuals, documentaries and more.',
+    mainImage: supervoidMainImage,
+    alt: 'Supervoid TV website screenshot with a black background and white text',
+    technologies: ['React', 'Next.js'],
+    liveSite: 'https://supervoid.tv',
+    github: 'https://github.com/joshnussbaum89/supervoid-next',
+    caseStudy: [
+      {
+        title: 'Introduction',
+        description:
+          'Supervoid TV is a Philadelphia-based creative team specializing in stage visuals and music videos. Working with clients such as Rage Against the Machine, The Disco Biscuits, Spiritbox, and more, it was important for Supervoid to have a website that showcases the stunning visual work they do and the services they provide. We were able to provide all of this and more with a fully responsive and accessible website that is fast and SEO-friendly.',
+        image: supervoidMacbookImage,
+      },
+      {
+        title: 'Project Objectives',
+        description:
+          "Working with Supervoid involved a lot of discussion around what sensory experience we wanted to create for the user. We wanted to create a site that was visually stunning, fully immersive, and allowed for easy portfolio updates as they continue to work with new clients. In addition to Supervoid's portfolio of visual work, it was also important to showcase their other business offerings and services in a way that illustrates the Supervoid brand and guides the user to the information they are looking for.",
+        image: supervoidIphoneImage,
+      },
+      {
+        title: 'Key Features and Solutions',
+        description:
+          "For maximum immersion, we decided to display GIFs of Supervoid's work on the homepage in an explosive display of color and movement. We host all GIFs on Vimeo and access them with the very handy, Vimeo API. This allows us to display the GIFs without sacrificing load times or performance. Services sections utilize catchy visuals and animations to draw the user's eye to relevant or important information. This site is built with Next.js and is fully responsive and accessible on all devices. All styling is custom CSS tailored to Supervoid's exact specifications and branding.",
+        image: supervoidStyleGuideImage,
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Robby Webb',
+    description: 'Website build for Robby Webb, Philadelphia producer, drummer and engineer.',
+    mainImage: robbyWebbMainImage,
+    alt: 'Robby Webb website screenshot with a black background and white text',
+    technologies: ['React', 'Next.js', 'Styled Components'],
+    liveSite: 'https://robbywebb.com',
+    github: 'https://github.com/joshnussbaum89/robby-webb',
+    caseStudy: [
+      {
+        title: 'Introduction',
+        description:
+          "Robby Webb, a Philadelphia music producer, drummer, and engineer, collaborated with us to create a website that showcases his discography and provides a platform for his audience to connect with him. Robby's site features a fully responsive and accessible design that is fast and SEO-friendly.",
+        image: robbyWebbMacbookImage,
+      },
+      {
+        title: 'Project Objectives',
+        description:
+          'Robby is an amazing engineer with an impressive portfolio of albums to his name. He needed a website that would allow him to keep his audience up to date with all of his latest projects, and provide a straightforward way for potential clients to get in touch with him. It was also important to Robby that his site be fast and SEO-friendly so that he could be easily found by potential clients and collaborators.',
+        image: robbyWebbIphoneImage,
+      },
+      {
+        title: 'Key Features and Solutions',
+        description:
+          "Robby's site is built with Next.js and is fully responsive and accessible on all devices. All styling, including the site logo, is custom CSS tailored to Robby's exact specifications and branding. This website features a discography page that showcases Robby's previous work, designated pages for each album he has worked on, and a contact page that allows users to seamlessly connect with Robby about potential projects.",
+        image: robbyWebbStyleGuideImage,
+      },
+    ],
+  },
+]
+---
+
+<section id="portfolio" class="portfolio site-section">
+  <div class="portfolio-header">
+    <SectionHeader text="Featured Work" class="title" />
+    <div class="portfolio-header-info desktop">
+      <a href="/#faq" aria-label="Frequently Asked Questions" title="Frequently Asked Questions">
+        <GlowingCircle />
+        <p>Find answers to common questions about building with Wave Land Web</p>
+        <Icon name="arrow" />
+      </a>
+    </div>
+  </div>
+  <div class="project-cards">
+    {
+      projects.map((project) => {
+        return (
+          <article class="card">
+            <span>0{`${project.id}`}</span>
+            <h3>{project.title}</h3>
+            <div class="card-image-container">
+              <Picture src={project.mainImage} formats={['avif', 'webp']} alt={project.alt} />
+              <button class="site-cta" data-project-id={project.id}>
+                Learn More
+              </button>
+              <div class="scrim" />
+            </div>
+          </article>
+        )
+      })
+    }
+  </div>
+  <div class="portfolio-header-info mobile">
+    <a href="/#faq">
+      <GlowingCircle />
+      <p>Find answers to common questions about building with Wave Land Web</p>
+      <Icon name="arrow" />
+    </a>
+  </div>
+  {
+    projects.map((project) => {
+      return (
+        <div class="modal" data-project-id={project.id}>
+          <button class="close">
+            <Icon name="close" />
+          </button>
+          <div class="modal-content">
+            <h3>{project.title}</h3>
+            {project.caseStudy.map((section) => {
+              return (
+                <div class="modal-section">
+                  <Picture src={section.image} formats={['avif', 'webp']} alt={project.alt} />
+                  <div class="modal-info">
+                    <h4>{section.title}</h4>
+                    <p>{section.description}</p>
+                    <Icon name="dots" />
+                  </div>
+                </div>
+              )
+            })}
+            <div class="modal-buttons">
+              <a class="site-cta" href={project.liveSite} target="_blank" rel="noopener noreferrer">
+                Live Site
+              </a>
+              <a class="site-cta" href={project.github} target="_blank" rel="noopener noreferrer">
+                Code
+              </a>
+            </div>
+          </div>
+        </div>
+      )
+    })
+  }
+</section>
+
+<style>
+  .portfolio {
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .portfolio {
+      display: grid;
+      grid-template-columns: 275px 1fr;
+      gap: 10vw;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .portfolio-header {
+      position: sticky;
+      top: 1rem;
+      height: fit-content;
+    }
+  }
+
+  .portfolio-header .title {
+    margin-bottom: 2rem;
+    font-size: var(--size-xl);
+  }
+
+  @media (min-width: 768px) {
+    .portfolio-header .title {
+      margin-top: 0;
+      font-size: var(--size-xxl);
+      text-align: left;
+    }
+  }
+
+  .portfolio-header-info {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .portfolio-header-info.mobile {
+      display: none;
+    }
+  }
+
+  .portfolio-header-info.desktop {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .portfolio-header-info.desktop {
+      display: block;
+    }
+  }
+
+  .portfolio-header-info p {
+    margin: 0 auto 2rem;
+    max-width: 250px;
+  }
+
+  .portfolio-header-info [astro-icon='arrow'] {
+    height: 75px;
+  }
+
+  .project-cards {
+    margin-bottom: var(--section-spacing-base);
+  }
+
+  @media (min-width: 768px) {
+    .project-cards {
+      margin-bottom: 0;
+    }
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .card {
+      max-width: 400px;
+    }
+
+    .card:nth-of-type(even) {
+      margin-left: auto;
+    }
+  }
+
+  .card span {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: var(--size-xl);
+    color: var(--color-primary-200);
+  }
+
+  .card h3 {
+    margin-bottom: 1rem;
+    font-size: var(--size-base);
+  }
+
+  .card-image-container {
+    position: relative;
+    border: 2px solid var(--color-background);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow-light);
+    overflow: hidden;
+  }
+
+  .card-image-container .site-cta {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.75rem;
+    color: var(--color-background);
+    background-color: var(--color-primary-100);
+    font-size: var(--size-xs);
+    border: none;
+    opacity: 0;
+    transition: all var(--transition-normal);
+  }
+
+  .card.active .site-cta,
+  .card-image-container:hover .site-cta {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    opacity: 1;
+  }
+
+  .card-image-container .site-cta:hover {
+    background-color: var(--color-primary-200);
+    color: var(--color-foreground);
+    box-shadow: none;
+  }
+
+  .card-image-container .scrim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: var(--color-background);
+    transition: opacity var(--transition-normal);
+  }
+
+  .card.active .scrim,
+  .card-image-container:hover .scrim {
+    opacity: 0.4;
+    z-index: 1;
+  }
+
+  /* Case study modal styles */
+
+  .modal {
+    position: fixed;
+    width: calc(100% - 2rem);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+    transition: opacity var(--transition-normal);
+  }
+
+  .modal.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+  }
+
+  button.close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    padding: 1rem;
+    background-color: var(--color-primary-100);
+    border-radius: 50%;
+    transition: all var(--transition-normal);
+    border: none;
+    cursor: pointer;
+  }
+
+  button.close:hover {
+    background-color: var(--color-primary-200);
+  }
+
+  button.close [astro-icon='close'] {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke: var(--color-background);
+    transition: all var(--transition-normal);
+    stroke-width: 2rem;
+    stroke-linecap: round;
+  }
+
+  button.close:hover [astro-icon='close'] {
+    stroke: var(--color-foreground);
+  }
+
+  .modal-content {
+    height: 100vh;
+    padding: 5rem 2rem;
+    color: var(--color-foreground);
+    background: var(--color-background);
+    overflow-y: auto;
+  }
+
+  .modal-content h3 {
+    margin: 0 auto 4rem;
+    font-size: var(--size-xl);
+    text-align: center;
+  }
+
+  .modal-section {
+    margin: 0 auto 6rem;
+    max-width: var(--max-width);
+  }
+
+  @media (min-width: 1024px) {
+    .modal-section {
+      display: flex;
+      align-items: center;
+      gap: var(--section-spacing-base);
+    }
+
+    .modal-section:nth-of-type(2) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .modal-section img {
+    max-width: 650px;
+    margin: 0 auto 2rem;
+  }
+
+  .modal-section:nth-of-type(1) img {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .modal-section img {
+      margin-bottom: 0;
+    }
+  }
+
+  .modal-info {
+    text-align: center;
+  }
+
+  @media (min-width: 1024px) {
+    .modal-info {
+      width: 50%;
+      max-width: 650px;
+    }
+  }
+
+  .modal-info h4 {
+    margin-bottom: 2rem;
+    font-size: var(--size-lg);
+  }
+
+  .modal-info p {
+    margin-bottom: 2rem;
+  }
+
+  .modal-info [astro-icon='dots'] {
+    max-width: 4rem;
+    margin: auto;
+  }
+
+  .modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .modal-buttons {
+      gap: 2rem;
+    }
+  }
+
+  .modal-buttons .site-cta {
+    width: 100%;
+    max-width: 120px;
+    padding: 0.75rem;
+    font-size: var(--size-xs);
+    color: var(--color-background);
+    background-color: var(--color-primary-100);
+  }
+
+  .modal-buttons .site-cta:hover {
+    color: var(--color-foreground);
+    background-color: var(--color-primary-200);
+    box-shadow: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const body = document.querySelector('body') as HTMLElement
+    const projectCards = document.querySelectorAll('.card') as NodeListOf<HTMLElement>
+    const learnMoreCtas = [...document.querySelectorAll('.card .site-cta')] as HTMLButtonElement[]
+    const closeButtons = [...document.querySelectorAll('.close')] as HTMLButtonElement[]
+
+    function resetCardStyling() {
+      projectCards.forEach((card) => card.classList.remove('active'))
+    }
+
+    function handleShowCtas() {
+      if (!window.IntersectionObserver) return console.log('IntersectionObserver not supported')
+      if (window.innerWidth > 768) {
+        resetCardStyling()
+        return
+      }
+
+      const options = {
+        root: document.querySelector('.projects'),
+        rootMargin: '0px',
+        threshold: 1,
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active')
+          } else {
+            entry.target.classList.remove('active')
+          }
+        })
+      }, options)
+
+      projectCards.forEach((card) => observer.observe(card))
+    }
+
+    function showModal(event: MouseEvent) {
+      const id = (event.target as HTMLElement).getAttribute('data-project-id')
+      const modal = document.querySelector(`.modal[data-project-id="${id}"]`) as HTMLElement
+      body.setAttribute('data-overlay-displayed', 'true')
+      modal.classList.toggle('active')
+    }
+
+    function hideModal(event: MouseEvent) {
+      const modal = (event.target as HTMLElement).closest('.modal') as HTMLElement
+      body.setAttribute('data-overlay-displayed', 'false')
+      modal.classList.toggle('active')
+    }
+
+    document.addEventListener('scroll', handleShowCtas)
+    window.addEventListener('resize', handleShowCtas)
+    learnMoreCtas.forEach((cta) => cta.addEventListener('click', showModal))
+    closeButtons.forEach((button) => button.addEventListener('click', hideModal))
+  })
+</script>

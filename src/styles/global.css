@@ -21,25 +21,20 @@
 
   /* Colors */
 
-  --color-primary-100: #d7c8ff;
+  --color-background: oklch(0% 0 0);
+  --color-foreground: oklch(98.38% 0.0089 289.94);
+  --color-foreground-transparent: oklch(98.38% 0.007935771087350203 286.25295319390017 / 85%);
+
   --color-primary-100: oklch(86.32% 0.0848 297.53);
-
-  --color-primary-200: #7500d7;
   --color-primary-200: oklch(47.8% 0.2679 297.53);
-
-  --color-secondary-100: #e3ffe3;
   --color-secondary-100: oklch(97.2% 0.0525 145.16);
-
-  --color-secondary-200: #a2ffe7;
   --color-secondary-200: oklch(93.52% 0.1078 175.63);
-
-  --color-error: #ea1400;
   --color-error: oklch(59.3% 0.25 30.06);
 
-  --color-grey-100: #d9d9d9;
-  --color-grey-200: #b5b5b5;
-  --color-grey-300: #858585;
-  --color-grey-transparent: #4444441a;
+  --color-grey-100: oklch(88.53% 0 0);
+  --color-grey-200: oklch(77.31% 0 0);
+  --color-grey-300: oklch(61.67% 0 0);
+  --color-grey-transparent: oklch(38.67% 0 0 / 10.2%);
 
   /* Shadows */
 
@@ -51,6 +46,25 @@
   --transition-normal: 0.2s ease-in-out;
   --transition-long: 0.6s ease-in-out;
   --transition-natural: cubic-bezier(0.42, 0.97, 0.52, 1.29);
+}
+
+@supports not (color: oklch(0%, 0, 0)) {
+  :root {
+    --color-background: #000000;
+    --color-foreground: #f9f9ff;
+    --color-foreground-transparent: #f9f9ffd9;
+
+    --color-primary-100: #d7c8ff;
+    --color-primary-200: #7500d7;
+    --color-secondary-100: #e3ffe3;
+    --color-secondary-200: #a2ffe7;
+    --color-error: #ea1400;
+
+    --color-grey-100: #d9d9d9;
+    --color-grey-200: #b5b5b5;
+    --color-grey-300: #858585;
+    --color-grey-transparent: #4444441a;
+  }
 }
 
 *,
@@ -71,7 +85,6 @@ html {
 }
 
 img,
-picture,
 svg,
 video {
   display: block;
@@ -89,18 +102,6 @@ button {
 }
 
 body {
-  --color-background: #000000;
-  --color-background: oklch(0% 0 0);
-
-  --color-foreground: #f9f9ff;
-  --color-foreground: oklch(98.38% 0.0089 289.94);
-
-  --color-foreground-transparent: #f9f9ffd9;
-  --color-foreground-transparent: oklch(98.38% 0.007935771087350203 286.25295319390017 / 85%);
-
-  --color-transparent: #00000000;
-  --color-transparent: oklch(0% 0 0 / 0%);
-
   background: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -109,32 +110,6 @@ body {
 
   /* Experimental, but fallback is default styling */
   text-wrap: pretty;
-}
-
-/* TODO: Fix this, it's not working with user settings */
-/* @media (prefers-color-scheme: dark) {
-  body {
-    --color-background: #fcfcfc;
-    --color-foreground: #000000;
-    --color-foreground-transparent: #000000ee;
-    --color-transparent: #ffffff00;
-  }
-} */
-
-body.dark {
-  --color-background: #f9f9ff;
-  --color-background: oklch(98.38% 0.0089 289.94);
-
-  --color-foreground: #000000;
-  --color-foreground: oklch(0% 0 0);
-
-  --color-foreground-transparent: #000000d9;
-  --color-foreground-transparent: oklch(0% 0 0 / 85%);
-
-  --color-transparent: #ffffff00;
-  --color-transparent: oklch(100% 0 0 / 0%);
-
-  --box-shadow-normal: 2px 2px 0 var(--color-secondary-200);
 }
 
 body[data-overlay-displayed='true'] {
@@ -243,11 +218,12 @@ footer {
   letter-spacing: 2px;
   color: var(--color-foreground);
   background-color: var(--color-background);
+  text-align: center;
+  line-height: normal;
   border: 2px solid var(--color-background);
   border-radius: 3rem;
   transition: all var(--transition-normal);
   cursor: pointer;
-  line-height: normal;
 }
 
 @media (min-width: 768px) {
