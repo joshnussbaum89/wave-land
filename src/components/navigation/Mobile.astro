@@ -10,8 +10,7 @@ const currentPath = Astro.url.pathname
   </button>
   <div class="mobile-nav-overlay">
     <ul>
-      <li><a href="/" aria-label="Home">Home</a></li>
-      <li><a href="/pricing" aria-label="Pricing">Pricing</a></li>
+      <li><a href="/#portfolio" aria-label="Portfolio">Portfolio</a></li>
       <li><a href="/blog" aria-label="Blog">Blog</a></li>
       <li><a href="/contact" aria-label="Contact">Contact</a></li>
     </ul>
@@ -126,9 +125,6 @@ const currentPath = Astro.url.pathname
   }
   .mobile-nav-overlay ul li:nth-of-type(3) {
     transition: all var(--transition-normal) 0.5s;
-  }
-  .mobile-nav-overlay ul li:nth-of-type(4) {
-    transition: all var(--transition-normal) 0.6s;
   }
 
   .hamburger.active + .mobile-nav-overlay ul li {
