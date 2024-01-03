@@ -159,7 +159,7 @@ const projects = [
   {
     projects.map((project) => {
       return (
-        <div class="modal" data-project-id={project.id}>
+        <dialog class="modal" data-project-id={project.id}>
           <button class="close">
             <Icon name="close" />
           </button>
@@ -186,7 +186,7 @@ const projects = [
               </a>
             </div>
           </div>
-        </div>
+        </dialog>
       )
     })
   }
@@ -195,13 +195,13 @@ const projects = [
 <style>
   .portfolio {
     position: relative;
-  }
 
-  @media (min-width: 768px) {
-    .portfolio {
-      display: grid;
-      grid-template-columns: 275px 1fr;
-      gap: 10vw;
+    @media (min-width: 768px) {
+      & {
+        display: grid;
+        grid-template-columns: 275px 1fr;
+        gap: 10vw;
+      }
     }
   }
 
@@ -216,80 +216,80 @@ const projects = [
   .portfolio-header .title {
     margin-bottom: 2rem;
     font-size: var(--size-xl);
-  }
 
-  @media (min-width: 768px) {
-    .portfolio-header .title {
-      margin-top: 0;
-      font-size: var(--size-xxl);
-      text-align: left;
+    @media (min-width: 768px) {
+      & {
+        margin-top: 0;
+        font-size: var(--size-xxl);
+        text-align: left;
+      }
     }
   }
 
   .portfolio-header-info {
     text-align: center;
-  }
 
-  @media (min-width: 768px) {
-    .portfolio-header-info.mobile {
+    & p {
+      margin: 0 auto 2rem;
+      max-width: 250px;
+    }
+
+    & [astro-icon='arrow'] {
+      height: 75px;
+    }
+
+    &.desktop {
       display: none;
+
+      @media (min-width: 768px) {
+        & {
+          display: block;
+        }
+      }
     }
-  }
 
-  .portfolio-header-info.desktop {
-    display: none;
-  }
-
-  @media (min-width: 768px) {
-    .portfolio-header-info.desktop {
-      display: block;
+    @media (min-width: 768px) {
+      &.mobile {
+        display: none;
+      }
     }
-  }
-
-  .portfolio-header-info p {
-    margin: 0 auto 2rem;
-    max-width: 250px;
-  }
-
-  .portfolio-header-info [astro-icon='arrow'] {
-    height: 75px;
   }
 
   .project-cards {
     margin-bottom: var(--section-spacing-base);
-  }
 
-  @media (min-width: 768px) {
-    .project-cards {
-      margin-bottom: 0;
+    @media (min-width: 768px) {
+      & {
+        margin-bottom: 0;
+      }
     }
   }
 
   .card {
     width: 100%;
     margin-bottom: 2rem;
-  }
 
-  @media (min-width: 768px) {
-    .card {
-      max-width: 400px;
+    @media (min-width: 768px) {
+      & {
+        max-width: 400px;
+      }
+
+      &:nth-of-type(even) {
+        margin-left: auto;
+      }
     }
 
-    .card:nth-of-type(even) {
-      margin-left: auto;
+    & span {
+      display: inline-block;
+      margin-bottom: 1rem;
+      font-size: var(--size-xl);
+      color: var(--color-primary-200);
     }
-  }
 
-  .card span {
-    display: inline-block;
-    margin-bottom: 1rem;
-    font-size: var(--size-xl);
-    color: var(--color-primary-200);
-  }
-
-  .card h3 {
-    margin-bottom: 1rem;
-    font-size: var(--size-base);
+    & h3 {
+      margin-bottom: 1rem;
+      font-size: var(--size-base);
+    }
   }
 
   .card-image-container {
@@ -298,20 +298,37 @@ const projects = [
     border-radius: 10px;
     box-shadow: var(--box-shadow-light);
     overflow: hidden;
-  }
 
-  .card-image-container .site-cta {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 0.75rem;
-    color: var(--color-background);
-    background-color: var(--color-primary-100);
-    font-size: var(--size-xs);
-    border: none;
-    opacity: 0;
-    transition: all var(--transition-normal);
+    & .site-cta {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 0.75rem;
+      color: var(--color-background);
+      background-color: var(--color-primary-100);
+      font-size: var(--size-xs);
+      border: none;
+      opacity: 0;
+      transition: all var(--transition-normal);
+    }
+
+    & .site-cta:hover {
+      background-color: var(--color-primary-200);
+      color: var(--color-foreground);
+      box-shadow: none;
+    }
+
+    & .scrim {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-color: var(--color-background);
+      transition: opacity var(--transition-normal);
+    }
   }
 
   .card.active .site-cta,
@@ -320,23 +337,6 @@ const projects = [
     transform: translate(-50%, -50%);
     z-index: 2;
     opacity: 1;
-  }
-
-  .card-image-container .site-cta:hover {
-    background-color: var(--color-primary-200);
-    color: var(--color-foreground);
-    box-shadow: none;
-  }
-
-  .card-image-container .scrim {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    background-color: var(--color-background);
-    transition: opacity var(--transition-normal);
   }
 
   .card.active .scrim,
@@ -348,24 +348,11 @@ const projects = [
   /* Case study modal styles */
 
   .modal {
-    position: fixed;
-    width: calc(100% - 2rem);
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    visibility: hidden;
-    z-index: -1;
-    transition: opacity var(--transition-normal);
+    max-width: 100vw;
+    max-height: 100vh;
   }
 
-  .modal.active {
-    opacity: 1;
-    visibility: visible;
-    z-index: 2;
-  }
-
-  button.close {
+  .close {
     position: absolute;
     top: 2rem;
     right: 2rem;
@@ -375,121 +362,120 @@ const projects = [
     transition: all var(--transition-normal);
     border: none;
     cursor: pointer;
-  }
 
-  button.close:hover {
-    background-color: var(--color-primary-200);
-  }
+    &:hover {
+      background-color: var(--color-primary-200);
 
-  button.close [astro-icon='close'] {
-    width: 1.25rem;
-    height: 1.25rem;
-    stroke: var(--color-background);
-    transition: all var(--transition-normal);
-    stroke-width: 2rem;
-    stroke-linecap: round;
-  }
+      & [astro-icon='close'] {
+        stroke: var(--color-foreground);
+      }
+    }
 
-  button.close:hover [astro-icon='close'] {
-    stroke: var(--color-foreground);
+    & [astro-icon='close'] {
+      width: 1.25rem;
+      height: 1.25rem;
+      stroke: var(--color-background);
+      transition: all var(--transition-normal);
+      stroke-width: 2rem;
+      stroke-linecap: round;
+    }
   }
 
   .modal-content {
+    width: 100vw;
     height: 100vh;
     padding: 5rem 2rem;
     color: var(--color-foreground);
     background: var(--color-background);
     overflow-y: auto;
-  }
 
-  .modal-content h3 {
-    margin: 0 auto 4rem;
-    font-size: var(--size-xl);
-    text-align: center;
+    & h3 {
+      margin: 0 auto 4rem;
+      font-size: var(--size-xl);
+      text-align: center;
+    }
   }
 
   .modal-section {
     margin: 0 auto 6rem;
     max-width: var(--max-width);
-  }
 
-  @media (min-width: 1024px) {
-    .modal-section {
-      display: flex;
-      align-items: center;
-      gap: var(--section-spacing-base);
+    & img {
+      max-width: 650px;
+      margin: 0 auto 2rem;
     }
 
-    .modal-section:nth-of-type(2) {
-      flex-direction: row-reverse;
-    }
-  }
-
-  .modal-section img {
-    max-width: 650px;
-    margin: 0 auto 2rem;
-  }
-
-  .modal-section:nth-of-type(1) img {
-    margin-bottom: 0;
-  }
-
-  @media (min-width: 1024px) {
-    .modal-section img {
+    &:nth-of-type(1) img {
       margin-bottom: 0;
+    }
+
+    @media (min-width: 1024px) {
+      & {
+        display: flex;
+        align-items: center;
+        gap: var(--section-spacing-base);
+      }
+
+      &:nth-of-type(2) {
+        flex-direction: row-reverse;
+      }
+
+      & img {
+        margin-bottom: 0;
+      }
     }
   }
 
   .modal-info {
     text-align: center;
-  }
 
-  @media (min-width: 1024px) {
-    .modal-info {
-      width: 50%;
-      max-width: 650px;
+    @media (min-width: 1024px) {
+      & {
+        width: 50%;
+        max-width: 650px;
+      }
     }
-  }
 
-  .modal-info h4 {
-    margin-bottom: 2rem;
-    font-size: var(--size-lg);
-  }
+    & h4 {
+      margin-bottom: 2rem;
+      font-size: var(--size-lg);
+    }
 
-  .modal-info p {
-    margin-bottom: 2rem;
-  }
+    & p {
+      margin-bottom: 2rem;
+    }
 
-  .modal-info [astro-icon='dots'] {
-    max-width: 4rem;
-    margin: auto;
+    & [astro-icon='dots'] {
+      max-width: 4rem;
+      margin: auto;
+    }
   }
 
   .modal-buttons {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-  }
 
-  @media (min-width: 1024px) {
-    .modal-buttons {
-      gap: 2rem;
+    @media (min-width: 1024px) {
+      & {
+        gap: 2rem;
+      }
     }
-  }
 
-  .modal-buttons .site-cta {
-    width: 100%;
-    max-width: 120px;
-    padding: 0.75rem;
-    font-size: var(--size-xs);
-    color: var(--color-background);
-    background-color: var(--color-primary-100);
-  }
+    & .site-cta {
+      width: 100%;
+      max-width: 120px;
+      padding: 0.75rem;
+      font-size: var(--size-xs);
+      color: var(--color-background);
+      background-color: var(--color-primary-100);
+    }
 
-  .modal-buttons .site-cta:hover {
-    color: var(--color-foreground);
-    background-color: var(--color-primary-200);
-    box-shadow: none;
+    & .site-cta:hover {
+      color: var(--color-foreground);
+      background-color: var(--color-primary-200);
+      box-shadow: none;
+    }
   }
 </style>
 
@@ -532,15 +518,15 @@ const projects = [
 
     function showModal(event: MouseEvent) {
       const id = (event.target as HTMLElement).getAttribute('data-project-id')
-      const modal = document.querySelector(`.modal[data-project-id="${id}"]`) as HTMLElement
+      const modal = document.querySelector(`.modal[data-project-id="${id}"]`) as HTMLDialogElement
       body.setAttribute('data-overlay-displayed', 'true')
-      modal.classList.toggle('active')
+      modal.showModal()
     }
 
     function hideModal(event: MouseEvent) {
-      const modal = (event.target as HTMLElement).closest('.modal') as HTMLElement
+      const modal = (event.target as HTMLDialogElement).closest('.modal') as HTMLDialogElement
       body.setAttribute('data-overlay-displayed', 'false')
-      modal.classList.toggle('active')
+      modal.close()
     }
 
     document.addEventListener('scroll', handleShowCtas)

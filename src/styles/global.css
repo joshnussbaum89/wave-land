@@ -110,10 +110,10 @@ body {
 
   /* Experimental, but fallback is default styling */
   text-wrap: pretty;
-}
 
-body[data-overlay-displayed='true'] {
-  overflow: hidden;
+  &[data-overlay-displayed='true'] {
+    overflow: hidden;
+  }
 }
 
 h1,
@@ -186,11 +186,11 @@ footer {
   color: var(--color-background);
   background-color: var(--color-foreground);
   border-radius: 1rem;
-}
 
-@media (min-width: 768px) {
-  .site-wrapper {
-    padding: 2rem;
+  @media (min-width: 768px) {
+    & {
+      padding: 2rem;
+    }
   }
 }
 
@@ -201,16 +201,16 @@ footer {
   padding: 1rem 0;
   opacity: 0;
   transition: opacity var(--transition-long);
-}
 
-@media (min-width: 768px) {
-  .site-section {
-    padding: 2rem 0;
+  @media (min-width: 768px) {
+    & {
+      padding: 2rem 0;
+    }
   }
-}
 
-.site-section.active {
-  opacity: 1;
+  &.active {
+    opacity: 1;
+  }
 }
 
 .site-cta {
@@ -224,19 +224,19 @@ footer {
   border-radius: 3rem;
   transition: all var(--transition-normal);
   cursor: pointer;
-}
 
-@media (min-width: 768px) {
-  .site-cta:hover {
-    color: var(--color-background);
-    background-color: var(--color-foreground);
-    box-shadow: var(--box-shadow-normal);
-    transform: scale(1.01);
-  }
+  @media (min-width: 768px) {
+    &:hover {
+      color: var(--color-background);
+      background-color: var(--color-foreground);
+      box-shadow: var(--box-shadow-normal);
+      transform: scale(1.01);
+    }
 
-  .site-cta:active {
-    transform: scale(0.99);
-    box-shadow: none;
+    &:active {
+      transform: scale(0.99);
+      box-shadow: none;
+    }
   }
 }
 
@@ -244,18 +244,12 @@ footer {
   text-decoration: underline;
   color: var(--color-primary-200);
   transition: all var(--transition-normal);
-}
 
-@media (min-width: 768px) {
-  .site-link:hover {
-    opacity: var(--hover-opacity-link);
+  @media (min-width: 768px) {
+    &:hover {
+      opacity: var(--hover-opacity-link);
+    }
   }
-}
-
-body.dark .site-cta {
-  color: var(--color-background);
-  background-color: var(--color-primary-200);
-  border: 2px solid var(--color-foreground);
 }
 
 .error-text {
@@ -298,8 +292,4 @@ body.dark .site-cta {
 ::selection {
   color: var(--color-background);
   background: var(--color-secondary-200);
-}
-
-body.dark ::selection {
-  color: var(--color-foreground);
 }
