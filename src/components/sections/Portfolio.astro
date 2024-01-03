@@ -348,12 +348,14 @@ const projects = [
   /* Case study modal styles */
 
   .modal {
+    width: 100%;
     max-width: 100vw;
     max-height: 100vh;
+    border: none;
   }
 
   .close {
-    position: absolute;
+    position: fixed;
     top: 2rem;
     right: 2rem;
     padding: 1rem;
@@ -382,8 +384,6 @@ const projects = [
   }
 
   .modal-content {
-    width: 100vw;
-    height: 100vh;
     padding: 5rem 2rem;
     color: var(--color-foreground);
     background: var(--color-background);
@@ -485,6 +485,7 @@ const projects = [
     const projectCards = document.querySelectorAll('.card') as NodeListOf<HTMLElement>
     const learnMoreCtas = [...document.querySelectorAll('.card .site-cta')] as HTMLButtonElement[]
     const closeButtons = [...document.querySelectorAll('.close')] as HTMLButtonElement[]
+    let overlayDisplayed = false
 
     function resetCardStyling() {
       projectCards.forEach((card) => card.classList.remove('active'))
@@ -516,22 +517,39 @@ const projects = [
       projectCards.forEach((card) => observer.observe(card))
     }
 
-    function showModal(event: MouseEvent) {
-      const id = (event.target as HTMLElement).getAttribute('data-project-id')
-      const modal = document.querySelector(`.modal[data-project-id="${id}"]`) as HTMLDialogElement
-      body.setAttribute('data-overlay-displayed', 'true')
-      modal.showModal()
+    function closeModal() {
+      overlayDisplayed = false
+      body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
     }
 
-    function hideModal(event: MouseEvent) {
-      const modal = (event.target as HTMLDialogElement).closest('.modal') as HTMLDialogElement
-      body.setAttribute('data-overlay-displayed', 'false')
-      modal.close()
+    function displayModal() {
+      overlayDisplayed = true
+      body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
     }
+
+    function handleShowModalClick(event: MouseEvent) {
+      const id = (event.target as HTMLElement).getAttribute('data-project-id')
+      const modal = document.querySelector(`.modal[data-project-id="${id}"]`) as HTMLDialogElement
+      modal.showModal()
+      displayModal()
+    }
+
+    function handleCloseModalClick(event: MouseEvent) {
+      const modal = (event.target as HTMLDialogElement).closest('.modal') as HTMLDialogElement
+      modal.close()
+      closeModal()
+    }
+
+    // Accessibility
+    body?.addEventListener('keyup', (event) => {
+      if (event.code === 'Escape' && overlayDisplayed) {
+        closeModal()
+      }
+    })
 
     document.addEventListener('scroll', handleShowCtas)
     window.addEventListener('resize', handleShowCtas)
-    learnMoreCtas.forEach((cta) => cta.addEventListener('click', showModal))
-    closeButtons.forEach((button) => button.addEventListener('click', hideModal))
+    learnMoreCtas.forEach((cta) => cta.addEventListener('click', handleShowModalClick))
+    closeButtons.forEach((button) => button.addEventListener('click', handleCloseModalClick))
   })
 </script>

@@ -12,8 +12,6 @@
   "dependencies": {
     "@astrojs/check": "^0.3.4",
     "@astrojs/sitemap": "^3.0.4",
-    "@sentry/astro": "^7.86.0",
-    "@spotlightjs/astro": "^0.0.26",
     "astro": "^4.0.9",
     "astro-icon": "^0.8.2",
     "autoprefixer": "^10.4.16",
