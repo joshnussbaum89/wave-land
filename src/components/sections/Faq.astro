@@ -1,0 +1,275 @@
+---
+import SectionHeader from '../SectionHeader.astro'
+---
+
+<section id="faq" class="faq site-section">
+  <SectionHeader text="Frequently Asked Questions" />
+
+  <div class="faq-section">
+    <h3>Logistics</h3>
+
+    <details>
+      <summary>How much will my website cost?</summary>
+      <p>
+        The cost of a website depends on various factors, such as its complexity, features, and the
+        amount of customization required. Websites start at $3,500, and we offer a hosting and
+        maintenance package for $300 per month. Although, no two websites are the same, so we will
+        work closely with you to determine the best solution for your needs and budget.
+      </p>
+    </details>
+    <details>
+      <summary>How long will it take to build my website?</summary>
+      <p>
+        The time it takes to build a website varies based on its complexity. A simple marketing site
+        can be completed in a few weeks, while a more intricate e-commerce site might take a couple
+        of months. We offer a wide variety of website solutions that can handle just about any
+        turnaround requirement. Rest assured, we will work closely with you to set realistic
+        timelines.
+      </p>
+    </details>
+    <details>
+      <summary>Can you provide hosting and maintenance for my website?</summary>
+      <p>
+        Absolutely! Websites are alive and ever-evolving and we are here to support you even after
+        initial website development. We offer a reliable Hosting & Maintenance add-on that ensures
+        your website remains secure, loads quickly, and is regularly backed up. However, some folks
+        like to handle these things on their own, and that is totally fine! In these cases, we can
+        help you get set up with recommended hosting and remain available for ongoing maintenance
+        and feature updates at our normal hourly rate.
+      </p>
+    </details>
+  </div>
+
+  <div class="faq-section">
+    <h3>Creative</h3>
+
+    <details>
+      <summary>What kind of websites do you build?</summary>
+      <p>
+        We build marketing, blog, and e-commerce websites that are high-performance, SEO-friendly,
+        and beautifully responsive on all modern devices. A marketing website is like an online
+        business card, showcasing your work. A blog is perfect for sharing your thoughts and
+        engaging with your audience. An e-commerce site allows you to sell products or services
+        directly from your website.
+      </p>
+    </details>
+    <details>
+      <summary>Can you help with content creation?</summary>
+      <p>
+        Knowing what content to include on a website can be overwhelming. In addition to building
+        and hosting your website, We are here to help with content planning, SEO and marketing
+        goals, and all other project management-related steps.
+      </p>
+    </details>
+    <details>
+      <summary>How do I know if my current website needs a redesign?</summary>
+      <p>
+        If your website is not performing as well as you would like, it may be time for a redesign.
+        We can help you determine if a redesign is necessary by analyzing your website's
+        performance, SEO, and overall user experience. If you are not sure where to start, reach out
+        below and we will be happy to provide you with a free website audit.
+      </p>
+    </details>
+  </div>
+
+  <div class="faq-section">
+    <h3>Technical</h3>
+
+    <details>
+      <summary
+        >Do I need any pre-existing technical knowledge to own, maintain and update my website?</summary
+      >
+      <p>
+        Nope! We believe in empowering clients with the knowledge necessary to be successful website
+        owners. All updates are handled for you at an affordable hourly rate, and and we offer
+        unlimited customer support so that you will have all the support you need to manage your
+        website.
+      </p>
+    </details>
+    <details>
+      <summary>Can you help me choose a domain name for my website?</summary>
+      <p>
+        Yep! Domain names are a whole thing and are especially important when it comes to search
+        engine optimization (SEO). We are here to assist you in finding the perfect domain name that
+        aligns with your brand and captures your unique identity. Informed by your preferences,
+        we'll help you secure a memorable web address.
+      </p>
+    </details>
+    <details>
+      <summary>Can you optimize my website for search engines (SEO)?</summary>
+      <p>
+        By default, every website is built while paying close attention to things like search engine
+        optimization (SEO), accessibility (A11y), and performance. We will optimize your site's
+        structure, meta tags, and content to improve its visibility in search engine results and
+        help you attract more organic traffic.
+      </p>
+    </details>
+    <details>
+      <summary>Will my website be mobile-friendly?</summary>
+      <p>
+        Yes! Mobile accessibility has never been more important. All of the websites we create are
+        fully responsive, meaning they will look and function great on all devices, from smartphones
+        to tablets and desktops.
+      </p>
+    </details>
+  </div>
+
+  <div class="faq-section">
+    <h3>Miscellaneous</h3>
+
+    <details>
+      <summary
+        >Why work with a web development agency when I can use low-code website builders like Wix,
+        Webflow, or Squarespace?</summary
+      >
+      <p>
+        We love low-code tools, and sometimes use them ourselves. While builders like Wix, Webflow,
+        or Squarespace are user-friendly and provide many benefits, a web development agency (or a
+        professional developer) offers unique insight to help create custom functionalities and
+        ensure optimal performance and scalability. With an agency, you gain personal support,
+        technical expertise, and a carefully tailored website that reflects your brand and stands
+        out from the crowd. We at Wave Land Web primarily build custom-coded websites because of the
+        flexibilty code provides, but are happy to set you up with a low-code option that best suits
+        your needs.
+      </p>
+    </details>
+  </div>
+</section>
+
+<style>
+  .faq {
+    max-width: 800px;
+
+    & h2,
+    .faq-section {
+      margin-bottom: 2rem;
+
+      @media (min-width: 768px) {
+        & {
+          margin-bottom: 3rem;
+        }
+      }
+    }
+  }
+
+  .faq-section {
+    padding: 1.25rem;
+    border: 1px solid var(--color-grey-300);
+    border-radius: 10px;
+    transition: all var(--transition-normal);
+
+    @media (min-width: 768px) {
+      & {
+        padding: 1.5rem;
+      }
+    }
+
+    &:hover,
+    &.active {
+      border-color: var(--color-background);
+      box-shadow: var(--box-shadow-light);
+    }
+
+    & h3 {
+      font-size: clamp(var(--size-sm), 4vw, var(--size-base));
+    }
+  }
+
+  details {
+    margin: 1.75rem auto;
+    padding-bottom: 1.75rem;
+    color: var(--color-grey-300);
+    border-bottom: 1px solid var(--color-grey-300);
+    transition: all var(--transition-normal);
+
+    @media (min-width: 768px) {
+      & {
+        margin: 2rem auto;
+        padding-bottom: 2rem;
+      }
+    }
+
+    &:last-of-type,
+    &:last-of-type[open],
+    &:last-of-type:hover {
+      margin-bottom: 0;
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    &:hover,
+    &[open],
+    &[open] summary::after,
+    &:hover summary::after {
+      color: var(--color-background);
+    }
+
+    &:hover,
+    &[open] {
+      border-bottom: 1px solid var(--color-background);
+    }
+
+    &[open] summary {
+      font-weight: bold;
+      padding-bottom: 1rem;
+
+      &::after {
+        content: '－';
+      }
+    }
+  }
+
+  summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    line-height: 1.5;
+    list-style: none;
+    cursor: pointer;
+
+    @media (min-width: 768px) {
+      & {
+        font-size: var(--size-sm);
+      }
+    }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: '＋';
+      color: var(--color-grey-300);
+      transition: color var(--transition-normal);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    function handleFaqStylingWhenInView() {
+      if (!window.IntersectionObserver) return console.log('IntersectionObserver not supported')
+      if (window.innerWidth > 768) return
+
+      const faqSections = document.querySelectorAll('.faq-section')
+      const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 1,
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active')
+          } else {
+            entry.target.classList.remove('active')
+          }
+        })
+      }, options)
+
+      faqSections.forEach((section) => observer.observe(section))
+    }
+    handleFaqStylingWhenInView()
+  })
+</script>

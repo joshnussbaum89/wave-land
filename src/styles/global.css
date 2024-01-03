@@ -162,6 +162,10 @@ footer {
   margin: 0 auto;
 }
 
+main {
+  margin-bottom: var(--section-spacing-large);
+}
+
 .bold {
   font-weight: 400;
 }
@@ -181,11 +185,12 @@ footer {
   width: calc(100% - 2rem);
   min-height: calc(100vh - 2rem);
   display: block;
-  margin: 1rem auto;
+  margin: 1rem auto 100px;
   padding: 1rem;
   color: var(--color-background);
   background-color: var(--color-foreground);
   border-radius: 1rem;
+  z-index: 1;
 
   @media (min-width: 768px) {
     & {

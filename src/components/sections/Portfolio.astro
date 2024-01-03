@@ -491,6 +491,7 @@ const projects = [
       projectCards.forEach((card) => card.classList.remove('active'))
     }
 
+    // Show CTAs on scroll
     function handleShowCtas() {
       if (!window.IntersectionObserver) return console.log('IntersectionObserver not supported')
       if (window.innerWidth > 768) {
@@ -517,6 +518,7 @@ const projects = [
       projectCards.forEach((card) => observer.observe(card))
     }
 
+    // Modal functionality
     function closeModal() {
       overlayDisplayed = false
       body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
@@ -547,6 +549,7 @@ const projects = [
       }
     })
 
+    // Event Listeners
     document.addEventListener('scroll', handleShowCtas)
     window.addEventListener('resize', handleShowCtas)
     learnMoreCtas.forEach((cta) => cta.addEventListener('click', handleShowModalClick))
