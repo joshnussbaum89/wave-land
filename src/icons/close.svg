@@ -1,9 +1,1 @@
-  <svg
-    width="159"
-    height="184"
-    viewBox="0 0 159 184"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M15 15L143.269 168.451" stroke-width="30" stroke-linecap="round"></path>
-    <path d="M15 168.455L143.263 15" stroke-width="30" stroke-linecap="round"></path>
-  </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="159" height="184"><path d="m15 15 128.269 153.451M15 168.455 143.263 15"/></svg>

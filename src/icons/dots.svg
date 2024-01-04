@@ -1,5 +1,1 @@
-<svg width="543" height="120" viewBox="0 0 543 120" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="483" cy="60" r="60" fill="var(--color-foreground)"></circle>
-  <circle cx="271" cy="60" r="60" fill="var(--color-foreground)"></circle>
-  <circle cx="60" cy="60" r="60" fill="var(--color-foreground)"></circle>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="543" height="120"><circle cx="483" cy="60" r="60" fill="var(--color-foreground)"/><circle cx="271" cy="60" r="60" fill="var(--color-foreground)"/><circle cx="60" cy="60" r="60" fill="var(--color-foreground)"/></svg>
