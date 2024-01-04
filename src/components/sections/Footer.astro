@@ -1,17 +1,179 @@
+---
+import Icon from 'astro-icon'
+import SocialIcons from '../SocialIcons.astro'
+---
+
 <footer id="footer" class="footer">
-  <p id="copyright">wavelandweb.com © {new Date().getFullYear()}</p>
+  <div class="wrapper">
+    <div class="footer-section">
+      <h3>Sign Up To Receive Updates From Wave Land Web</h3>
+      <form action="/api/subscribe">
+        <div class="form-group">
+          <div class="email-input">
+            <input id="email" type="email" name="email" placeholder=" " required />
+            <label for="email">Email Address</label>
+          </div>
+          <button type="submit" name="subscribe" aria-label="Subscribe">
+            <Icon name="input-arrow" />
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="footer-section">
+      <h3>Sitemap</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/#portfolio">Portfolio</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <ul>
+        <li>Madison, WI</li>
+        <li>Mon-Fri 9am-6pm</li>
+        <li>josh@wavelandweb.com</li>
+      </ul>
+      <SocialIcons />
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>wavelandweb.com © {new Date().getFullYear()}</p>
+  </div>
 </footer>
 
 <style>
   .footer {
-    position: fixed;
+    position: relative;
+    left: 0;
+    right: 0;
     bottom: 0;
-    width: 100%;
+    max-width: calc(100% - 2rem);
+    margin: 0 auto;
+    padding: 4rem 1rem 1rem;
+    color: var(--color-foreground);
+    border-top: 1px dashed var(--color-secondary-200);
 
-    & p {
-      padding: 2rem;
+    @media (min-width: 768px) {
+      & {
+        position: fixed;
+      }
+    }
+
+    & .wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--section-spacing-base);
+      margin: 0 auto 4rem;
+      max-width: var(--max-width);
+      background-color: var(--color-background);
+
+      @media (min-width: 768px) {
+        & {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        & {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    }
+
+    & .copyright {
+      padding: 1rem;
       text-align: center;
+
+      & p {
+        font-size: var(--size-xs);
+        color: var(--color-grey-200);
+      }
+    }
+  }
+
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &:first-of-type h3 {
+      margin-bottom: 2rem;
+    }
+
+    &:not(:first-of-type) h3 {
+      font-size: var(--size-base);
+    }
+
+    & li {
+      margin-bottom: 0.5rem;
+    }
+
+    & a:hover {
+      color: var(--color-secondary-200);
+    }
+  }
+
+  .form-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    & .email-input,
+    & input {
+      width: 100%;
+    }
+
+    & input {
+      padding: 1rem 0.5rem;
       color: var(--color-foreground);
+      background-color: var(--color-background);
+      border-top: none;
+      border-right: none;
+      border-bottom: 1px solid var(--color-foreground);
+      border-left: none;
+      border-radius: 0;
+      outline: none;
+      transition: all var(--transition-normal);
+
+      &:focus + label,
+      &:not(:placeholder-shown) + label {
+        top: -0.5rem;
+        left: 0;
+      }
+
+      &:focus + label,
+      &:valid + label {
+        color: var(--color-foreground);
+      }
+
+      &:not(:placeholder-shown):not(:valid) + label {
+        color: var(--color-error);
+      }
+    }
+
+    & label {
+      position: absolute;
+      top: 48%;
+      left: 0.5rem;
+      transform: translateY(-50%);
+      color: var(--color-grey-200);
+      transition: all var(--transition-normal);
+    }
+
+    & button {
+      position: absolute;
+      right: 0;
+      background-color: transparent;
+      border: none;
+
+      & svg {
+        width: 1rem;
+      }
     }
   }
 </style>

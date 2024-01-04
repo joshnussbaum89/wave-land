@@ -1,0 +1,41 @@
+---
+import Icon from 'astro-icon'
+---
+
+<div class="social-icons">
+  <a
+    href="https://www.instagram.com/wavelandweb/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+  >
+    <Icon name="instagram" />
+  </a>
+  <a
+    href="https://www.linkedin.com/company/wave-land-web/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+  >
+    <Icon name="linkedin" />
+  </a>
+  <a href="mailto:josh@wavelandweb.com?subject=Wave Land Web ✨" aria-label="Email">
+    <Icon name="email" />
+  </a>
+</div>
+
+<style>
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+
+    & svg {
+      width: 1.75rem;
+      fill: var(--color-foreground);
+
+      &:hover {
+        fill: var(--color-secondary-200);
+      }
+    }
+  }
+</style>

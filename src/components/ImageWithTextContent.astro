@@ -28,7 +28,7 @@ const { image, imageAlt, class: className } = Astro.props
 
   @media (min-width: 768px) {
     .image-and-text-content {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: minmax(250px, 475px) minmax(250px, 675px);
     }
   }
 
