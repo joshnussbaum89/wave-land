@@ -109,7 +109,7 @@ body {
   overflow: auto;
 
   /* Experimental, but fallback is default styling */
-  text-wrap: pretty;
+  text-wrap: balance;
 
   &[data-overlay-displayed='true'] {
     overflow: hidden;
@@ -122,6 +122,10 @@ h3,
 h4 {
   font-family: var(--font-heading);
   letter-spacing: 2px;
+}
+
+h1 {
+  font-size: clamp(var(--size-xl), 5vw, var(--size-xxl));
 }
 
 h2 {
@@ -161,6 +165,14 @@ main {
   margin: 0 auto;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 12rem);
+  text-align: center;
+}
+
 main {
   margin-bottom: var(--section-spacing-large);
 }
@@ -177,6 +189,15 @@ main {
   color: var(--color-primary-200);
   background-color: var(--color-primary-100);
   border-radius: 3rem;
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  max-width: 50rem;
 }
 
 .site-wrapper {
@@ -227,6 +248,10 @@ main {
   }
 
   &.active {
+    opacity: 1;
+  }
+
+  header& {
     opacity: 1;
   }
 }

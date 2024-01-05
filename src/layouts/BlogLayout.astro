@@ -1,0 +1,106 @@
+---
+import Layout from './Layout.astro'
+
+const { frontmatter } = Astro.props
+---
+
+<Layout
+  title={`Wave Land Web | ${frontmatter.title}`}
+  description={frontmatter.description}
+  socialImage={frontmatter.socialImage}
+>
+  <div id="blog-layout" class="blog-layout">
+    <slot />
+  </div>
+</Layout>
+
+<style is:inline>
+  .blog-layout {
+    max-width: 800px;
+    margin: auto;
+    padding: var(--section-spacing-base) 0;
+    text-align: left;
+  }
+
+  .blog-layout .header-info p {
+    color: var(--color-grey-300);
+  }
+
+  .blog-layout pre {
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  @media (min-width: 768px) {
+    .blog-layout pre {
+      margin: 2.5rem auto 2.5rem;
+      padding: 2rem;
+    }
+  }
+
+  .blog-layout img {
+    margin: 2rem auto;
+    border-radius: 10px;
+  }
+
+  @media (min-width: 768px) {
+    .blog-layout img {
+      margin: 2.5rem auto;
+    }
+  }
+
+  .blog-layout > picture img.small {
+    max-width: 450px;
+    margin-left: initial;
+  }
+
+  .blog-layout h2,
+  .blog-layout h3 {
+    margin: 3rem 0 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .blog-layout h2,
+    .blog-layout h3 {
+      margin: 4rem 0 2rem;
+    }
+  }
+
+  .blog-layout ul,
+  .blog-layout ol {
+    margin-bottom: 2rem;
+  }
+
+  .blog-layout li {
+    margin-bottom: 1rem;
+  }
+
+  .blog-layout ul li {
+    list-style-type: disc;
+  }
+
+  .blog-layout ol li {
+    list-style-type: decimal;
+  }
+
+  .blog-layout p,
+  .blog-layout li {
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .blog-layout p,
+    .blog-layout li {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .blog-layout p code {
+    padding: 0.1rem 0.3rem 0.2rem;
+    white-space: nowrap;
+    box-decoration-break: clone;
+    background: var(--color-grey-transparent);
+    border-radius: 0.25rem;
+  }
+</style>
