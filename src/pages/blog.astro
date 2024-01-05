@@ -24,7 +24,8 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
 >
   <header>
     <div class="header-info">
-      <h1>Wave Land Blog</h1>
+      <h1>Blog</h1>
+      <p>Wave Land Musings</p>
       <p>
         Stay Informed on all things web development, Wave Land Web's perspective on the latest
         trends, and tips and tricks for building and maintaining a successful online presence.
@@ -64,8 +65,20 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
 </Layout>
 
 <style>
+  .header-info h1 {
+    font-family: var(--font-body);
+    font-size: clamp(var(--size-sm), 4vw, var(--size-base));
+    color: var(--color-primary-200);
+  }
+
   .header-info p {
     font-size: clamp(var(--size-sm), 4vw, var(--size-base));
+
+    &:nth-of-type(1) {
+      font-family: var(--font-heading);
+      font-size: clamp(var(--size-xl), 5vw, var(--size-xxl));
+      line-height: normal;
+    }
   }
 
   .blog-container {
