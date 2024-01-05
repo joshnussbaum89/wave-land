@@ -34,7 +34,7 @@ import SocialIcons from '../SocialIcons.astro'
       <h3>Contact</h3>
       <ul>
         <li>Madison, WI</li>
-        <li>Mon-Fri 9am-6pm</li>
+        <li>Mon-Fri 9am-5pm</li>
         <li>josh@wavelandweb.com</li>
       </ul>
       <SocialIcons />
@@ -170,8 +170,9 @@ import SocialIcons from '../SocialIcons.astro'
       right: 0;
       background-color: transparent;
       border: none;
+      cursor: pointer;
 
-      & svg {
+      & [astro-icon='input-arrow'] {
         width: 1rem;
       }
     }
