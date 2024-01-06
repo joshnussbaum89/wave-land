@@ -3,6 +3,8 @@ import { Picture } from 'astro:assets'
 import Icon from 'astro-icon'
 import SectionHeader from '../text/SectionHeader.astro'
 import GlowingCircle from '../animations/GlowingCircle.astro'
+import Scrim from '../Scrim.astro'
+import SiteCta from '../SiteCta.astro'
 
 // Moonbelly Makes
 import moonbellyMainImage from '../../assets/moonbelly.webp'
@@ -160,6 +162,7 @@ const projects = [
     projects.map((project) => {
       return (
         <dialog class="modal" data-project-id={project.id}>
+          <Scrim />
           <button class="close">
             <Icon name="close" />
           </button>
@@ -178,12 +181,8 @@ const projects = [
               )
             })}
             <div class="modal-buttons">
-              <a class="site-cta" href={project.liveSite} target="_blank" rel="noopener noreferrer">
-                Live Site
-              </a>
-              <a class="site-cta" href={project.github} target="_blank" rel="noopener noreferrer">
-                Code
-              </a>
+              <SiteCta class="cta" text="Live Site" url={project.liveSite} openInNewTab={true} />
+              <SiteCta class="cta" text="Code" url={project.github} openInNewTab={true} />
             </div>
           </div>
         </dialog>
@@ -462,7 +461,7 @@ const projects = [
       }
     }
 
-    & .site-cta {
+    & .cta {
       width: 100%;
       max-width: 120px;
       padding: 0.75rem;
@@ -471,7 +470,7 @@ const projects = [
       background-color: var(--color-primary-100);
     }
 
-    & .site-cta:hover {
+    & .cta:hover {
       color: var(--color-foreground);
       background-color: var(--color-primary-200);
       box-shadow: none;
