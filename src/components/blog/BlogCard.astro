@@ -12,7 +12,7 @@ export interface Props {
 const { slug, title, published, image, imageAlt } = Astro.props
 ---
 
-<div class="card">
+<article class="card">
   <a href={slug}>
     <Picture src={image} formats={['avif', 'webp']} alt={imageAlt} />
   </a>
@@ -20,7 +20,7 @@ const { slug, title, published, image, imageAlt } = Astro.props
     <p>{published}</p>
     <h3><a href={slug}>{title}</a></h3>
   </div>
-</div>
+</article>
 
 <style>
   .card {

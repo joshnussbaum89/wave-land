@@ -154,14 +154,11 @@ ul {
 }
 
 section {
-  min-height: 100vh;
   margin: var(--section-spacing-base) auto var(--section-spacing-large);
 }
 
 nav,
-header,
 main {
-  max-width: var(--max-width);
   margin: 0 auto;
 }
 
@@ -169,7 +166,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 12rem);
+  margin: var(--section-spacing-large) auto;
   text-align: center;
 }
 

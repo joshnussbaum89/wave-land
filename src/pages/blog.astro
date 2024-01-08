@@ -33,35 +33,37 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
     </div>
   </header>
 
-  <section id="blog-container" class="blog-container">
-    <div class="newest-post-container">
-      <a href={`/blog/${newestPost?.slug}`}>
-        <Picture
-          src={newestPost!.data.image}
-          formats={['avif', 'webp']}
-          alt={newestPost!.data.imageAlt}
-        />
-      </a>
-      <div class="newest-post-info">
-        <p>{newestPost?.data.published}</p>
-        <h2><a href={`/blog/${newestPost?.slug}`}>{newestPost?.data.title}</a></h2>
-        <p>{truncatedDescriptionText}</p>
-      </div>
-    </div>
-    <div class="recent-posts-container">
-      {
-        recentPosts.map((post) => (
-          <BlogCard
-            title={post.data.title}
-            published={post.data.published}
-            slug={`/blog/${post.slug}`}
-            image={post.data.image}
-            imageAlt={post.data.imageAlt}
+  <main>
+    <section id="blog-container" class="blog-container">
+      <article class="newest-post-container">
+        <a href={`/blog/${newestPost?.slug}`}>
+          <Picture
+            src={newestPost!.data.image}
+            formats={['avif', 'webp']}
+            alt={newestPost!.data.imageAlt}
           />
-        ))
-      }
-    </div>
-  </section>
+        </a>
+        <div class="newest-post-info">
+          <p>{newestPost?.data.published}</p>
+          <h2><a href={`/blog/${newestPost?.slug}`}>{newestPost?.data.title}</a></h2>
+          <p>{truncatedDescriptionText}</p>
+        </div>
+      </article>
+      <div class="recent-posts-container">
+        {
+          recentPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              published={post.data.published}
+              slug={`/blog/${post.slug}`}
+              image={post.data.image}
+              imageAlt={post.data.imageAlt}
+            />
+          ))
+        }
+      </div>
+    </section>
+  </main>
 </Layout>
 
 <style>
@@ -83,15 +85,6 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
 
   .blog-container {
     max-width: 1100px;
-    margin: 0 auto;
-    padding: 1rem;
-    z-index: 1;
-
-    @media (min-width: 768px) {
-      & {
-        padding: 0 2rem;
-      }
-    }
   }
 
   .newest-post-container {

@@ -3,7 +3,108 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="Wave Land Web | Contact" description="Contact Wave Land Web">
-  <header>
-    <h1>Contact</h1>
+  <header class="header">
+    <div class="header-info">
+      <h1>Contact</h1>
+      <p>Ready to get started?</p>
+      <p>Fill out the form below and I'll get back to you as soon as possible.</p>
+    </div>
   </header>
+
+  <main>
+    <section id="contact" class="contact">
+      <form method="POST" class="form" name="contactForm" action="/success" data-netlify="true">
+        <label for="name">Name: <span>*</span></label>
+        <input id="name" type="text" name="name" placeholder="Name" required />
+        <label for="email">Email: <span>*</span></label>
+        <input id="email" type="email" name="email" placeholder="Email" required />
+        <label for="message">Message: <span>*</span></label>
+        <textarea
+          id="message"
+          name="message"
+          cols="30"
+          rows="5"
+          placeholder="Write your message"
+          required></textarea>
+        <button class="site-cta" type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
 </Layout>
+
+<style>
+  .header,
+  .contact {
+    max-width: 650px;
+  }
+
+  .header-info h1 {
+    font-family: var(--font-body);
+    font-size: clamp(var(--size-sm), 4vw, var(--size-base));
+    color: var(--color-primary-200);
+  }
+
+  .header-info p {
+    font-size: clamp(var(--size-sm), 4vw, var(--size-base));
+
+    &:nth-of-type(1) {
+      font-family: var(--font-heading);
+      font-size: clamp(var(--size-xl), 5vw, var(--size-xxl));
+      line-height: normal;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--size-sm);
+
+    & label,
+    & input,
+    & textarea {
+      border-radius: 5px;
+    }
+
+    & input,
+    & textarea {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: 2px solid var(--color-background);
+      background: var(--color-foreground);
+      transition: var(--transition-normal);
+    }
+
+    & label {
+      margin-bottom: 0.25rem;
+
+      & span {
+        color: var(--color-error);
+      }
+    }
+
+    & textarea {
+      margin-bottom: 2rem;
+      resize: vertical;
+    }
+
+    & button {
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      font-size: clamp(var(--size-sm), 4vw, var(--size-base));
+    }
+
+    & input:focus,
+    & textarea:focus {
+      outline: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      -webkit-box-shadow: 0 0 0 2px var(--color-primary-100);
+      box-shadow: 0 0 0 2px var(--color-primary-100);
+    }
+
+    & input::placeholder,
+    & textarea::placeholder {
+      color: var(--color-grey-300);
+    }
+  }
+</style>

@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon'
 import SiteCta from '../SiteCta.astro'
 ---
 
-<header id="hero" class="site-section">
+<header id="hero" class="hero site-section">
   <div class="header-info">
     <Icon name="title" />
     <p>Web Development Agency Helping Artists & Creatives Build Their Digital Presence</p>
@@ -12,6 +12,11 @@ import SiteCta from '../SiteCta.astro'
 </header>
 
 <style>
+  .hero {
+    min-height: calc(100vh - 12rem);
+    margin: 0;
+  }
+
   .header-info p {
     margin-bottom: 1rem;
     font-size: clamp(var(--size-sm), 4vw, var(--size-lg));
