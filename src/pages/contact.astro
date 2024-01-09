@@ -7,25 +7,76 @@ import Layout from '../layouts/Layout.astro'
     <div class="header-info">
       <h1>Contact</h1>
       <p>Ready to get started?</p>
-      <p>Fill out the form below and I'll get back to you as soon as possible.</p>
+      <p>Fill out the form below and we'll get back to you as soon as possible.</p>
     </div>
   </header>
 
   <main>
     <section id="contact" class="contact">
-      <form method="POST" class="form" name="contactForm" action="/success" data-netlify="true">
-        <label for="name">Name: <span>*</span></label>
-        <input id="name" type="text" name="name" placeholder="Name" required />
-        <label for="email">Email: <span>*</span></label>
-        <input id="email" type="email" name="email" placeholder="Email" required />
-        <label for="message">Message: <span>*</span></label>
-        <textarea
-          id="message"
-          name="message"
-          cols="30"
-          rows="5"
-          placeholder="Write your message"
-          required></textarea>
+      <form method="POST" class="form" name="contactForm" action="/success/" data-netlify="true">
+        <!-- Name -->
+        <div class="form-field">
+          <input id="name" type="text" name="name" placeholder=" " required />
+          <label for="name">Name <span>*</span></label>
+        </div>
+
+        <!-- Email -->
+        <div class="form-field">
+          <input id="email" type="email" name="email" placeholder=" " required />
+          <label for="email">Email <span>*</span></label>
+        </div>
+
+        <!-- Company -->
+        <div class="form-field">
+          <input id="company" type="text" name="company" placeholder=" " required />
+          <label for="company">Company <span>*</span></label>
+        </div>
+
+        <!-- Services -->
+        <div class="form-field">
+          <p>What services are you interested in?</p>
+
+          <!-- Web Design -->
+          <div class="checkbox">
+            <input type="checkbox" id="web-design" name="web-design" value="Web Design" />
+            <label for="web-design">Web Design</label>
+          </div>
+
+          <!-- Web Development -->
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              id="web-development"
+              name="web-development"
+              value="Web Development"
+            />
+            <label for="web-development">Web Development</label>
+          </div>
+
+          <!-- SEO -->
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              id="hosting-and-maintenance"
+              name="hosting-and-maintenance"
+              value="Hosting and Maintenance"
+            />
+            <label for="hosting-and-maintenance">Hosting and Maintenance</label>
+          </div>
+
+          <!-- Other -->
+          <div class="checkbox">
+            <input type="checkbox" id="other" name="other" value="Other" />
+            <label for="other">Other</label>
+          </div>
+        </div>
+
+        <!-- Message -->
+        <div class="form-field">
+          <textarea id="message" name="message" cols="30" rows="5" placeholder=" " required
+          ></textarea>
+          <label for="message">How can we help you? <span>*</span></label>
+        </div>
         <button class="site-cta" type="submit">Send Message</button>
       </form>
     </section>
@@ -57,54 +108,119 @@ import Layout from '../layouts/Layout.astro'
   .form {
     display: flex;
     flex-direction: column;
-    font-size: var(--size-sm);
-
-    & label,
-    & input,
-    & textarea {
-      border-radius: 5px;
-    }
-
-    & input,
-    & textarea {
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      border: 2px solid var(--color-background);
-      background: var(--color-foreground);
-      transition: var(--transition-normal);
-    }
-
-    & label {
-      margin-bottom: 0.25rem;
-
-      & span {
-        color: var(--color-error);
-      }
-    }
-
-    & textarea {
-      margin-bottom: 2rem;
-      resize: vertical;
-    }
+    gap: 1rem;
 
     & button {
       margin: 0 auto;
       padding: 1rem 1.5rem;
       font-size: clamp(var(--size-sm), 4vw, var(--size-base));
     }
+  }
+
+  .form-field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+
+    & label,
+    & p {
+      color: var(--color-grey-300);
+    }
+
+    & p {
+      font-size: var(--size-sm);
+    }
+
+    & textarea {
+      resize: vertical;
+    }
+
+    &:has(input[type='checkbox']:checked) p {
+      color: var(--color-background);
+    }
+
+    & .checkbox {
+      font-size: var(--size-xs);
+    }
+
+    & .checkbox input,
+    & .checkbox label {
+      cursor: pointer;
+    }
+
+    & .checkbox input {
+      margin-right: 0.5rem;
+    }
+
+    & .checkbox input:checked + label {
+      color: var(--color-background);
+    }
+
+    & input,
+    & textarea {
+      padding: 1rem 0.5rem;
+      background-color: transparent;
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      border-bottom: 2px solid var(--color-background);
+      outline: none;
+      transition: all var(--transition-normal);
+    }
 
     & input:focus,
     & textarea:focus {
-      outline: 0;
-      appearance: none;
-      -webkit-appearance: none;
-      -webkit-box-shadow: 0 0 0 2px var(--color-primary-100);
-      box-shadow: 0 0 0 2px var(--color-primary-100);
+      border-bottom: 2px solid var(--color-primary-200);
     }
 
-    & input::placeholder,
-    & textarea::placeholder {
-      color: var(--color-grey-300);
+    & input:not(:placeholder-shown):valid,
+    & textarea:not(:placeholder-shown):valid {
+      border-color: var(--color-background);
+    }
+
+    & input:not(:placeholder-shown):not(:valid),
+    & textarea:not(:placeholder-shown):not(:valid) {
+      border-color: var(--color-primary-200);
+    }
+
+    & input:not(:placeholder-shown):not(:valid) + label,
+    & textarea:not(:placeholder-shown):not(:valid) + label {
+      color: var(--color-primary-200);
+    }
+
+    &:not(:has(input[type='checkbox'])) label {
+      position: absolute;
+      top: 48%;
+      left: 0.5rem;
+      transform: translateY(-50%);
+      font-size: var(--size-sm);
+      transition: all var(--transition-normal);
+    }
+
+    & textarea + label {
+      top: 1.5rem;
+    }
+
+    & input:not([type='checkbox']):focus + label,
+    & textarea:focus + label,
+    & span {
+      color: var(--color-primary-200);
+    }
+
+    & input:not([type='checkbox']):valid + label,
+    & textarea:valid + label {
+      color: var(--color-background);
+    }
+
+    & input:focus + label,
+    & textarea:focus + label,
+    & input:not(:placeholder-shown) + label,
+    & textarea:not(:placeholder-shown) + label {
+      top: -0.5rem;
+      left: 0;
+      font-size: var(--size-xs);
     }
   }
 </style>

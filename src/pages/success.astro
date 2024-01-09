@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="Wave Land Web | Contact" description="Contact Wave Land Web">
+  <header class="header">
+    <div class="header-info">
+      <h1>Thank you!</h1>
+      <p>Your form submission has been received.</p>
+      <a href="/" class="site-cta">← Back to site</a>
+    </div>
+  </header>
+</Layout>
+
+<style>
+  .header p {
+    margin-bottom: 1rem;
+    font-size: clamp(var(--size-sm), 4vw, var(--size-base));
+  }
+
+  .header .site-cta {
+    padding: 1rem 1.5rem;
+    font-size: clamp(var(--size-sm), 4vw, var(--size-base));
+  }
+</style>

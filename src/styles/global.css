@@ -304,7 +304,7 @@ main {
     box-shadow: none;
   }
   50% {
-    box-shadow: 0 0 0.5rem var(--color-secondary-200);
+    box-shadow: 0 0 0.5rem var(--color-primary-200);
   }
   100% {
     box-shadow: none;
