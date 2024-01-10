@@ -115,10 +115,7 @@ import Icon from 'astro-icon'
       body: formData,
     })
 
-    console.log('response: ', response)
-
     const data = await response.json()
-    console.log('response data: ', data)
 
     // Error subscribing
     if (data.error) {
