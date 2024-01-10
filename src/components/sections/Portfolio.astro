@@ -505,79 +505,79 @@ const projects = [
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
-    const body = document.querySelector('body') as HTMLElement
-    const projectCards = document.querySelectorAll('.card') as NodeListOf<HTMLElement>
-    const learnMoreCtas = [...document.querySelectorAll('.card .site-cta')] as HTMLButtonElement[]
-    const closeButtons = [...document.querySelectorAll('.close')] as HTMLButtonElement[]
-    let overlayDisplayed = false
+  // document.addEventListener('astro:page-load', () => {
+  const body = document.querySelector('body') as HTMLElement
+  const projectCards = document.querySelectorAll('.card') as NodeListOf<HTMLElement>
+  const learnMoreCtas = [...document.querySelectorAll('.card .site-cta')] as HTMLButtonElement[]
+  const closeButtons = [...document.querySelectorAll('.close')] as HTMLButtonElement[]
+  let overlayDisplayed = false
 
-    function resetCardStyling() {
-      projectCards.forEach((card) => card.classList.remove('active'))
+  function resetCardStyling() {
+    projectCards.forEach((card) => card.classList.remove('active'))
+  }
+
+  // Show CTAs on scroll
+  function handleShowCtas() {
+    if (!window.IntersectionObserver) return console.log('IntersectionObserver not supported')
+    if (window.innerWidth > 768) {
+      resetCardStyling()
+      return
     }
 
-    // Show CTAs on scroll
-    function handleShowCtas() {
-      if (!window.IntersectionObserver) return console.log('IntersectionObserver not supported')
-      if (window.innerWidth > 768) {
-        resetCardStyling()
-        return
-      }
-
-      const options = {
-        root: document.querySelector('.projects'),
-        rootMargin: '0px',
-        threshold: 1,
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active')
-          } else {
-            entry.target.classList.remove('active')
-          }
-        })
-      }, options)
-
-      projectCards.forEach((card) => observer.observe(card))
+    const options = {
+      root: document.querySelector('.projects'),
+      rootMargin: '0px',
+      threshold: 1,
     }
 
-    // Modal functionality
-    function closeModal() {
-      overlayDisplayed = false
-      body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
-    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active')
+        } else {
+          entry.target.classList.remove('active')
+        }
+      })
+    }, options)
 
-    function displayModal() {
-      overlayDisplayed = true
-      body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
-    }
+    projectCards.forEach((card) => observer.observe(card))
+  }
 
-    function handleShowModalClick(event: MouseEvent) {
-      const id = (event.target as HTMLElement).getAttribute('data-project-id')
-      const modal = document.querySelector(`.modal[data-project-id="${id}"]`) as HTMLDialogElement
-      modal.showModal()
-      displayModal()
-    }
+  // Modal functionality
+  function closeModal() {
+    overlayDisplayed = false
+    body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
+  }
 
-    function handleCloseModalClick(event: MouseEvent) {
-      const modal = (event.target as HTMLDialogElement).closest('.modal') as HTMLDialogElement
-      modal.close()
+  function displayModal() {
+    overlayDisplayed = true
+    body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
+  }
+
+  function handleShowModalClick(event: MouseEvent) {
+    const id = (event.target as HTMLElement).getAttribute('data-project-id')
+    const modal = document.querySelector(`.modal[data-project-id="${id}"]`) as HTMLDialogElement
+    modal.showModal()
+    displayModal()
+  }
+
+  function handleCloseModalClick(event: MouseEvent) {
+    const modal = (event.target as HTMLDialogElement).closest('.modal') as HTMLDialogElement
+    modal.close()
+    closeModal()
+  }
+
+  // Accessibility
+  body?.addEventListener('keyup', (event) => {
+    if (event.code === 'Escape' && overlayDisplayed) {
       closeModal()
     }
-
-    // Accessibility
-    body?.addEventListener('keyup', (event) => {
-      if (event.code === 'Escape' && overlayDisplayed) {
-        closeModal()
-      }
-    })
-
-    // Event Listeners
-    document.addEventListener('scroll', handleShowCtas)
-    window.addEventListener('resize', handleShowCtas)
-    learnMoreCtas.forEach((cta) => cta.addEventListener('click', handleShowModalClick))
-    closeButtons.forEach((button) => button.addEventListener('click', handleCloseModalClick))
   })
+
+  // Event Listeners
+  document.addEventListener('scroll', handleShowCtas)
+  window.addEventListener('resize', handleShowCtas)
+  learnMoreCtas.forEach((cta) => cta.addEventListener('click', handleShowModalClick))
+  closeButtons.forEach((button) => button.addEventListener('click', handleCloseModalClick))
+  // })
 </script>

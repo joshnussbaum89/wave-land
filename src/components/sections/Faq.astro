@@ -247,30 +247,30 @@ import SectionHeader from '../text/SectionHeader.astro'
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
-    function handleFaqStylingWhenInView() {
-      if (!window.IntersectionObserver) return console.log('IntersectionObserver not supported')
-      if (window.innerWidth > 768) return
+  // document.addEventListener('astro:page-load', () => {
+  function handleFaqStylingWhenInView() {
+    if (!window.IntersectionObserver) return console.log('IntersectionObserver not supported')
+    if (window.innerWidth > 768) return
 
-      const faqSections = document.querySelectorAll('.faq-section')
-      const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 1,
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active')
-          } else {
-            entry.target.classList.remove('active')
-          }
-        })
-      }, options)
-
-      faqSections.forEach((section) => observer.observe(section))
+    const faqSections = document.querySelectorAll('.faq-section')
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1,
     }
-    handleFaqStylingWhenInView()
-  })
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active')
+        } else {
+          entry.target.classList.remove('active')
+        }
+      })
+    }, options)
+
+    faqSections.forEach((section) => observer.observe(section))
+  }
+  handleFaqStylingWhenInView()
+  // })
 </script>

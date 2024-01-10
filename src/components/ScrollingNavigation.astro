@@ -64,52 +64,50 @@ const { sections } = Astro.props
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
-    const navigationDots = document.querySelectorAll('.scrolling-navigation .dot')
-    let activeDotIndex = 0
-    let currentDotIndex = 0
+  // document.addEventListener('astro:page-load', () => {
+  const navigationDots = document.querySelectorAll('.scrolling-navigation .dot')
+  let activeDotIndex = 0
+  let currentDotIndex = 0
 
-    function handleActiveNavigationDotStyling(element: HTMLElement | null) {
-      // Prevent removing/adding class unnecessarily
-      if (activeDotIndex === currentDotIndex) return
+  function handleActiveNavigationDotStyling(element: HTMLElement | null) {
+    // Prevent removing/adding class unnecessarily
+    if (activeDotIndex === currentDotIndex) return
 
-      // Active dot index increased (scrolling down)
-      // Style newly active dot
-      navigationDots.forEach((dot) => dot.classList.remove('active'))
-      element?.classList.add('active')
+    // Active dot index increased (scrolling down)
+    // Style newly active dot
+    navigationDots.forEach((dot) => dot.classList.remove('active'))
+    element?.classList.add('active')
 
-      // Update current dot index
-      currentDotIndex = activeDotIndex
+    // Update current dot index
+    currentDotIndex = activeDotIndex
+  }
+
+  function handleActiveElementsOnScroll() {
+    if (!window.IntersectionObserver) return console.log('IntersectionObserver not supported')
+
+    const sections = [...document.querySelectorAll('.site-section')]
+
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1,
     }
 
-    function handleActiveElementsOnScroll() {
-      if (!window.IntersectionObserver) return console.log('IntersectionObserver not supported')
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const section = entry.target
+          const index = sections.indexOf(section)
+          activeDotIndex = index
+        }
+      })
+    }, options)
 
-      const sections = [...document.querySelectorAll('.site-section')]
+    sections.forEach((section) => observer.observe(section))
 
-      const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1,
-      }
+    handleActiveNavigationDotStyling(document.querySelector(`.dot[data-index="${activeDotIndex}"]`))
+  }
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const section = entry.target
-            const index = sections.indexOf(section)
-            activeDotIndex = index
-          }
-        })
-      }, options)
-
-      sections.forEach((section) => observer.observe(section))
-
-      handleActiveNavigationDotStyling(
-        document.querySelector(`.dot[data-index="${activeDotIndex}"]`)
-      )
-    }
-
-    document.addEventListener('scroll', handleActiveElementsOnScroll)
-  })
+  document.addEventListener('scroll', handleActiveElementsOnScroll)
+  // })
 </script>
