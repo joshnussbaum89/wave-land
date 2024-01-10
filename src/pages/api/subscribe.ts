@@ -30,6 +30,7 @@ export const POST: APIRoute = async ({ request }) => {
       headers: {
         Authorization: `apikey ${API_KEY}`,
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
       method: 'POST',
     }
