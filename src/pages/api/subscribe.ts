@@ -38,6 +38,9 @@ export const POST: APIRoute = async ({ request }) => {
     }
   )
 
+  // Log the response for debugging
+  console.log(await mailchimpResponse.text())
+
   // Something went wrong
   if (mailchimpResponse.status >= 400) {
     return new Response(
