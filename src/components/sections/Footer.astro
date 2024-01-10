@@ -1,5 +1,5 @@
 ---
-import Icon from 'astro-icon'
+import SubscribeForm from '../forms/Subscribe.astro'
 import SocialIcons from '../SocialIcons.astro'
 ---
 
@@ -7,17 +7,7 @@ import SocialIcons from '../SocialIcons.astro'
   <div class="wrapper">
     <div class="footer-section">
       <h3>Sign Up To Receive Updates From Wave Land Web</h3>
-      <form action="/api/subscribe">
-        <div class="form-group">
-          <div class="email-input">
-            <input id="email" type="email" name="email" placeholder=" " required />
-            <label for="email">Email Address</label>
-          </div>
-          <button type="submit" name="subscribe" aria-label="Subscribe">
-            <Icon name="input-arrow" />
-          </button>
-        </div>
-      </form>
+      <SubscribeForm />
     </div>
 
     <div class="footer-section">
@@ -114,66 +104,6 @@ import SocialIcons from '../SocialIcons.astro'
 
     & a:hover {
       color: var(--color-secondary-200);
-    }
-  }
-
-  .form-group {
-    position: relative;
-    display: flex;
-    align-items: center;
-
-    & .email-input,
-    & input {
-      width: 100%;
-    }
-
-    & input {
-      padding: 1rem 0.5rem;
-      color: var(--color-foreground);
-      background-color: transparent;
-      border-top: none;
-      border-right: none;
-      border-bottom: 1px solid var(--color-foreground);
-      border-left: none;
-      border-radius: 0;
-      outline: none;
-      transition: all var(--transition-normal);
-
-      &:focus + label,
-      &:not(:placeholder-shown) + label {
-        top: -0.5rem;
-        left: 0;
-      }
-
-      &:focus + label,
-      &:valid + label {
-        color: var(--color-foreground);
-      }
-
-      &:not(:placeholder-shown):not(:valid) + label {
-        color: var(--color-error);
-      }
-    }
-
-    & label {
-      position: absolute;
-      top: 48%;
-      left: 0.5rem;
-      transform: translateY(-50%);
-      color: var(--color-grey-300);
-      transition: all var(--transition-normal);
-    }
-
-    & button {
-      position: absolute;
-      right: 0;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-
-      & [astro-icon='input-arrow'] {
-        width: 1rem;
-      }
     }
   }
 </style>

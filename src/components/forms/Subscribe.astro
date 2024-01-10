@@ -1,0 +1,138 @@
+---
+import Icon from 'astro-icon'
+---
+
+<form class="subscribe" action="/api/subscribe" method="POST" autocomplete="off">
+  <div class="form-group">
+    <div class="email-input">
+      <input id="email" type="email" name="email" placeholder=" " required />
+      <label for="email">Email Address</label>
+    </div>
+    <button type="submit" name="subscribe" aria-label="Subscribe">
+      <Icon name="input-arrow" />
+    </button>
+  </div>
+  <p class="response-message"></p>
+</form>
+
+<style>
+  .subscribe {
+    position: relative;
+
+    & .response-message {
+      font-size: var(--size-xs);
+
+      &.success,
+      &.error {
+        padding: 0.5rem;
+      }
+
+      &.success {
+        color: var(--color-secondary-200);
+      }
+
+      &.error {
+        color: var(--color-error);
+      }
+    }
+  }
+
+  .form-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    & .email-input,
+    & input {
+      width: 100%;
+    }
+
+    & input {
+      padding: 1rem 0.5rem;
+      color: var(--color-foreground);
+      background-color: transparent;
+      border-top: none;
+      border-right: none;
+      border-bottom: 1px solid var(--color-foreground);
+      border-left: none;
+      border-radius: 0;
+      outline: none;
+      transition: all var(--transition-normal);
+
+      &:focus + label,
+      &:not(:placeholder-shown) + label {
+        top: -0.5rem;
+        left: 0;
+      }
+
+      &:focus + label,
+      &:valid + label {
+        color: var(--color-foreground);
+      }
+
+      &:not(:placeholder-shown):not(:valid) + label {
+        color: var(--color-error);
+      }
+    }
+
+    & label {
+      position: absolute;
+      top: 48%;
+      left: 0.5rem;
+      transform: translateY(-50%);
+      color: var(--color-grey-300);
+      transition: all var(--transition-normal);
+    }
+
+    & button {
+      position: absolute;
+      right: 0;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      & [astro-icon='input-arrow'] {
+        width: 1rem;
+      }
+    }
+  }
+</style>
+
+<script>
+  const form = document.querySelector('form')
+  const responseMessage = form?.querySelector('.response-message')
+
+  // Submit handler
+  async function submit(e: SubmitEvent) {
+    e.preventDefault()
+
+    // Get form data
+    const formData = new FormData(e.target as HTMLFormElement)
+
+    // Send form data to API
+    const response = await fetch('/api/subscribe', {
+      method: 'POST',
+      body: formData,
+    })
+    const data = await response.json()
+
+    // Error subscribing
+    if (data.error) {
+      responseMessage?.classList.remove('success')
+      responseMessage?.classList.add('error')
+      responseMessage!.textContent = data.error
+    }
+
+    // Successful subscription
+    if (data.message) {
+      responseMessage?.classList.remove('error')
+      responseMessage?.classList.add('success')
+      responseMessage!.textContent = data.message
+    }
+
+    form?.reset()
+  }
+
+  // Submit event listener
+  form?.addEventListener('submit', submit)
+</script>
