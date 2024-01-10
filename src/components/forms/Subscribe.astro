@@ -110,11 +110,13 @@ import Icon from 'astro-icon'
     const formData = new FormData(e.target as HTMLFormElement)
 
     // Send form data to API
-    const response = await fetch('/api/subscribe', {
+    const response = await fetch('/api/subscribe/', {
       method: 'POST',
       body: formData,
     })
+
     const data = await response.json()
+    console.log('response data: ', data)
 
     // Error subscribing
     if (data.error) {
