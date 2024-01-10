@@ -99,41 +99,43 @@ import Icon from 'astro-icon'
 </style>
 
 <script>
-  const form = document.querySelector('form')
-  const responseMessage = form?.querySelector('.response-message')
+  document.addEventListener('astro:page-load', () => {
+    const form = document.querySelector('form')
+    const responseMessage = form?.querySelector('.response-message')
 
-  // Submit handler
-  async function submit(e: SubmitEvent) {
-    e.preventDefault()
+    // Submit handler
+    async function submit(e: SubmitEvent) {
+      e.preventDefault()
 
-    // Get form data
-    const formData = new FormData(e.target as HTMLFormElement)
+      // Get form data
+      const formData = new FormData(e.target as HTMLFormElement)
 
-    // Send form data to API
-    const response = await fetch('/api/subscribe/', {
-      method: 'POST',
-      body: formData,
-    })
+      // Send form data to API
+      const response = await fetch('/api/subscribe/', {
+        method: 'POST',
+        body: formData,
+      })
 
-    const data = await response.json()
+      const data = await response.json()
 
-    // Error subscribing
-    if (data.error) {
-      responseMessage?.classList.remove('success')
-      responseMessage?.classList.add('error')
-      responseMessage!.textContent = data.error
+      // Error subscribing
+      if (data.error) {
+        responseMessage?.classList.remove('success')
+        responseMessage?.classList.add('error')
+        responseMessage!.textContent = data.error
+      }
+
+      // Successful subscription
+      if (data.message) {
+        responseMessage?.classList.remove('error')
+        responseMessage?.classList.add('success')
+        responseMessage!.textContent = data.message
+      }
+
+      form?.reset()
     }
 
-    // Successful subscription
-    if (data.message) {
-      responseMessage?.classList.remove('error')
-      responseMessage?.classList.add('success')
-      responseMessage!.textContent = data.message
-    }
-
-    form?.reset()
-  }
-
-  // Submit event listener
-  form?.addEventListener('submit', submit)
+    // Submit event listener
+    form?.addEventListener('submit', submit)
+  })
 </script>
