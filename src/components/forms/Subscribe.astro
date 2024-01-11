@@ -100,7 +100,7 @@ import Icon from 'astro-icon'
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    const form = document.querySelector('form')
+    const form = document.querySelector('.subscribe') as HTMLFormElement
     const responseMessage = form?.querySelector('.response-message')
 
     // Submit handler
