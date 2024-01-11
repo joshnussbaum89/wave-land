@@ -102,6 +102,7 @@ import Layout from '../layouts/Layout.astro'
       font-family: var(--font-heading);
       font-size: clamp(var(--size-xl), 5vw, var(--size-xxl));
       line-height: normal;
+      text-wrap: balance;
     }
   }
 
@@ -142,16 +143,15 @@ import Layout from '../layouts/Layout.astro'
     }
 
     & .checkbox {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       font-size: var(--size-xs);
     }
 
     & .checkbox input,
     & .checkbox label {
       cursor: pointer;
-    }
-
-    & .checkbox input {
-      margin-right: 0.5rem;
     }
 
     & .checkbox input:checked + label {
@@ -166,6 +166,7 @@ import Layout from '../layouts/Layout.astro'
       border-right: none;
       border-left: none;
       border-bottom: 2px solid var(--color-background);
+      border-radius: 0;
       outline: none;
       transition: all var(--transition-normal);
     }

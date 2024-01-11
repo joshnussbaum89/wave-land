@@ -108,9 +108,6 @@ body {
   letter-spacing: 1px;
   overflow: auto;
 
-  /* Experimental, but fallback is default styling */
-  text-wrap: balance;
-
   &[data-overlay-displayed='true'] {
     overflow: hidden;
   }
@@ -122,6 +119,9 @@ h3,
 h4 {
   font-family: var(--font-heading);
   letter-spacing: 2px;
+
+  /* Experimental, but fallback is default styling */
+  text-wrap: balance;
 }
 
 h1 {
@@ -147,6 +147,13 @@ a {
 
 p {
   font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
+}
+
+p,
+li,
+summary {
+  /* Experimental, but fallback is default styling */
+  text-wrap: pretty;
 }
 
 ul {
