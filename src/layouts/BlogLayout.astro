@@ -9,10 +9,8 @@ const { frontmatter } = Astro.props
   description={frontmatter.description}
   socialImage={frontmatter.socialImage}
 >
-  <main>
-    <section id="blog-layout" class="blog-layout">
-      <slot />
-    </section>
+  <main id="blog-layout" class="blog-layout">
+    <slot />
   </main>
 </Layout>
 
@@ -20,10 +18,6 @@ const { frontmatter } = Astro.props
   .blog-layout {
     max-width: 800px;
     text-align: left;
-
-    & header {
-      margin-bottom: 0;
-    }
   }
 
   .blog-layout .header-info p {
