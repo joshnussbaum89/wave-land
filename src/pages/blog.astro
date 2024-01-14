@@ -45,7 +45,9 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
         </a>
         <div class="newest-post-info">
           <p>{newestPost?.data.published}</p>
-          <h2><a href={`/blog/${newestPost?.slug}`}>{newestPost?.data.title}</a></h2>
+          <h2>
+            <a href={`/blog/${newestPost?.slug}`} class="site-link">{newestPost?.data.title}</a>
+          </h2>
           <p>{truncatedDescriptionText}</p>
         </div>
       </article>
@@ -86,6 +88,17 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
 
   .blog-container {
     max-width: 1100px;
+
+    a:has(img) {
+      display: block;
+      max-height: 350px;
+    }
+
+    & img {
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
   }
 
   .newest-post-container {
@@ -94,7 +107,7 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
     width: 100%;
     margin: 0 auto 2.5rem;
     padding-bottom: 2.5rem;
-    border-bottom: 1px solid var(--color-grey-300);
+    border-bottom: 1px dashed var(--color-grey-300);
 
     @media (min-width: 1024px) {
       & {
@@ -119,7 +132,6 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
 
     & h2 {
       font-size: var(--size-sm);
-      text-transform: uppercase;
     }
 
     @media (min-width: 768px) {
@@ -132,20 +144,6 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
       color: var(--color-grey-300);
       font-size: var(--size-xs);
     }
-
-    & a {
-      transition: color var(--transition-normal);
-
-      &:hover {
-        color: var(--color-primary-200);
-      }
-    }
-  }
-
-  .newest-post-container img {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
   }
 
   .recent-posts-container {

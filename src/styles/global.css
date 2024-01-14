@@ -11,7 +11,7 @@
 
   /* Font Sizes */
 
-  --size-xxs: 0.75rem;
+  --size-xxs: 0.8rem;
   --size-xs: 1rem;
   --size-sm: 1.25rem;
   --size-base: 1.563rem;
@@ -46,6 +46,8 @@
   --transition-normal: 0.2s ease-in-out;
   --transition-long: 0.6s ease-in-out;
   --transition-natural: cubic-bezier(0.42, 0.97, 0.52, 1.29);
+
+  --hover-opacity-link: 0.7;
 }
 
 @supports not (color: oklch(0%, 0, 0)) {
@@ -288,14 +290,11 @@ main {
 }
 
 .site-link {
-  text-decoration: underline;
   color: var(--color-primary-200);
   transition: all var(--transition-normal);
 
-  @media (min-width: 768px) {
-    &:hover {
-      opacity: var(--hover-opacity-link);
-    }
+  &:hover {
+    opacity: var(--hover-opacity-link);
   }
 }
 
