@@ -20,12 +20,8 @@ import Icon from 'astro-icon'
     position: relative;
 
     & .response-message {
+      padding: 0.5rem;
       font-size: var(--size-xs);
-
-      &.success,
-      &.error {
-        padding: 0.5rem;
-      }
 
       &.success {
         color: var(--color-secondary-200);
@@ -109,6 +105,11 @@ import Icon from 'astro-icon'
 
       // Get form data
       const formData = new FormData(e.target as HTMLFormElement)
+
+      // Show loading message
+      responseMessage?.classList.remove('success')
+      responseMessage?.classList.remove('error')
+      responseMessage!.textContent = 'Loading...'
 
       // Send form data to API
       const response = await fetch('/api/subscribe/', {
