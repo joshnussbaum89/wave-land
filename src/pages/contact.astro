@@ -131,7 +131,7 @@ import Layout from '../layouts/Layout.astro'
     }
 
     & p {
-      font-size: var(--size-sm);
+      font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
     }
 
     & textarea {
@@ -200,7 +200,7 @@ import Layout from '../layouts/Layout.astro'
       top: 48%;
       left: 0.5rem;
       transform: translateY(-50%);
-      font-size: var(--size-sm);
+      font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
       transition: all var(--transition-normal);
     }
 
@@ -225,7 +225,6 @@ import Layout from '../layouts/Layout.astro'
     & textarea:not(:placeholder-shown) + label {
       top: -0.5rem;
       left: 0;
-      font-size: var(--size-xs);
     }
   }
 </style>
