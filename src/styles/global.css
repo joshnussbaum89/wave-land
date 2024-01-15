@@ -127,19 +127,19 @@ h4 {
 }
 
 h1 {
-  font-size: clamp(var(--size-xl), 5vw, var(--size-xxl));
+  font-size: clamp(var(--size-lg), 10vw, var(--size-xxl));
 }
 
 h2 {
-  font-size: clamp(var(--size-lg), 5vw, var(--size-xl));
+  font-size: clamp(var(--size-base), 10vw, var(--size-xl));
 }
 
 h3 {
-  font-size: clamp(var(--size-base), 5vw, var(--size-lg));
+  font-size: clamp(var(--size-sm), 10vw, var(--size-lg));
 }
 
 h4 {
-  font-size: clamp(var(--size-sm), 5vw, var(--size-base));
+  font-size: clamp(var(--size-xs), 10vw, var(--size-base));
 }
 
 a {
