@@ -147,7 +147,8 @@ a {
   text-decoration: none;
 }
 
-p {
+p,
+pre {
   font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
 }
 
