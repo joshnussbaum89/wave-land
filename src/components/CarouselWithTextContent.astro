@@ -1,0 +1,92 @@
+---
+import { Picture } from 'astro:assets'
+import TextContent from './TextContent.astro'
+
+export interface Props {
+  images: {
+    id: number
+    src: ImageMetadata
+    alt: string
+    active: boolean
+  }[]
+  class?: string
+}
+
+const { images, class: className } = Astro.props
+---
+
+<div class:list={['image-and-text-content', className]}>
+  <TextContent class="text-content-custom">
+    <slot />
+  </TextContent>
+  <div class="carousel">
+    {
+      images?.map((image) => {
+        return (
+          <Picture
+            class:list={['carousel-image', image.active && 'active']}
+            src={image.src}
+            formats={['avif', 'webp']}
+            data-id={image.id}
+            alt={image.alt}
+          />
+        )
+      })
+    }
+  </div>
+</div>
+
+<style>
+  .image-and-text-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: var(--section-spacing-base);
+  }
+
+  @media (min-width: 768px) {
+    .image-and-text-content {
+      grid-template-columns: minmax(250px, 475px) minmax(250px, 650px);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .text-content-custom {
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+
+  .carousel {
+    position: relative;
+    height: 100%;
+    min-height: 300px;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
+  .carousel-image {
+    position: absolute;
+    top: 0;
+    object-fit: cover;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  setInterval(() => {
+    const allImages = document.querySelectorAll('.carousel-image')
+    const activeImage = document.querySelector('.carousel-image.active')
+    const activeImageId = parseInt(activeImage?.getAttribute('data-id') || '1')
+    const nextImageId = activeImageId === allImages.length ? 1 : activeImageId + 1
+    const nextImage = document.querySelector(`.carousel-image[data-id="${nextImageId}"]`)
+
+    activeImage?.classList.remove('active')
+    nextImage?.classList.add('active')
+  }, 4000)
+</script>

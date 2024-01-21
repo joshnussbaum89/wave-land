@@ -3,15 +3,15 @@ id: '0'
 title: 'Choosing Web Development Tools'
 description: 'How we choose the tools we use to build websites and applications.'
 published: '10-09-2023'
-image: './images/web-development-tools.jpg'
-imageAlt: 'Two computer monitors with code on the screen on a desk with headphones.'
-socialImage: '/images/web-development-tools.jpg'
+image: './images/choosing-web-development-tools.png'
+imageAlt: 'Three friends shopping in a store for web development tools.'
+socialImage: '/images/choosing-web-development-tools.png'
 layout: '../../layouts/BlogLayout.astro'
 ---
 
 import { Picture } from 'astro:assets'
 import Link from '../../components/text/Link.astro'
-import headerImage from './images/web-development-tools.jpg'
+import headerImage from './images/choosing-web-development-tools.png'
 import typescriptImage from './images/typescript.png'
 import typescriptErrorImage from './images/typescript-error.png'
 import johnSnowImage from './images/john-snow.gif'
@@ -48,7 +48,7 @@ While it's important to choose the right tools for the job, it's more important 
 
 With that being said, I have recently decided on a few default tools that have been a joy to work with and thought it would be beneficial to share.
 
-## I. TypeScript
+## TypeScript
 
 I am predominately a JavaScript developer. While I enjoy the forgiving nature of JavaScript from its humble beginnings as a simple scripting language, I believe <Link href="https://www.typescriptlang.org/" text="TypeScript" newWindow={true} /> is a natural and welcome evolution of the language.
 
@@ -65,7 +65,7 @@ TypeScript makes my code smarter, which enables incredible auto-complete feature
 TypeScript is open source and closely follows the development of the JavaScript language according to
 current <Link href="https://tc39.es/" text="TC39" newWindow={true} /> specs and proposals, so it never feels like I'm straying away from browser standards.
 
-## II. CSS
+## CSS
 
 This might seem silly to mention, but writing vanilla CSS by default is an intentional choice I felt was worthwhile to talk about.
 
@@ -95,7 +95,7 @@ This also prevents naming fatigue that can happen as your stylesheets grow. Now 
 
 I also just enjoy not having to worry about extra tooling for my styling. Everything can be copied and pasted into any project and it just works. Writing vanilla CSS keeps me in the driver's seat at all times and allows me a level of flexibility that is hard to replace.
 
-## III. Astro
+## Astro
 
 I hesitate to include a JavaScript framework in this list, but let's include <Link href="https://astro.build/" text="Astro" newWindow={true} /> just for fun.
 
@@ -112,6 +112,7 @@ Astro generates lightweight HTML pages by default. It allows me to build statica
 What I like most about Astro is its <Link href="https://docs.astro.build/en/concepts/why-astro/#server-first" text="embrace of the server" newWindow={true} />. It feels similar to building with PHP, although you are just writing good old HTML, CSS, and JavaScript in every file.
 
 {/* GIFs may cause build errors - see: https://docs.astro.build/en/reference/errors/unsupported-image-format/ */}
+
 <Picture class="small" src={johnSnowImage} alt="John Snow" />
 
 My clients enjoy incredibly fast load times because every page is just HTML by default. No unnecessary client-side JavaScript has to load (like most front-end JS frameworks) just to display some static blog posts.
@@ -120,7 +121,7 @@ Images are optimized with the new <Link href="https://docs.astro.build/en/guides
 
 I could go on, but this has improved my life as an agency owner dramatically. If you are looking for simplicity with no lack of power, Astro is the move.
 
-## IV. Figma
+## Figma
 
 No web dev stack is complete without a go-to design tool. My preferred option is <Link href="https://www.figma.com/" text="Figma" newWindow={true} />.
 
@@ -132,7 +133,7 @@ I think Figma is connecting the dots in a lot of ways. For example, developers c
 
 In recent years, Figma has started to feel like the industry standard for designing on the web. Whether you are a designer, developer, or somewhere in between, Figma is a perfect tool to get started building professional-looking designs and products.
 
-## V. The "Platform"
+## The "Platform"
 
 The "Platform" refers to the browsers that we are building for such as Chrome, Safari, and Firefox. This one is a bit abstract, but I believe it's more important than ever to build for The "Platform".
 

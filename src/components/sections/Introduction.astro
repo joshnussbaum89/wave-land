@@ -1,14 +1,26 @@
 ---
-import ImageWithTextContent from '../ImageWithTextContent.astro'
+import CarouselWithTextContent from '../CarouselWithTextContent.astro'
 import SiteCta from '../SiteCta.astro'
-import project from '../../assets/moonbelly-screens.png'
+import moonbellyDevicesImage from '../../assets/moonbelly-devices.png'
+import supervoidDevicesImage from '../../assets/supervoid-devices.png'
+import robbyWebbDevicesImage from '../../assets/robby-webb-devices.png'
+import bornYesterdayBakeryDevicesImage from '../../assets/born-yesterday-bakery-devices.png'
 ---
 
 <section id="introduction" class="introduction site-section">
-  <ImageWithTextContent
+  <CarouselWithTextContent
     class="image-with-text-content-custom"
-    image={project}
-    imageAlt="Moonbelly website on desktop and mobile"
+    images={[
+      { id: 1, src: moonbellyDevicesImage, alt: 'Moonbelly Makes Devices', active: true },
+      { id: 2, src: supervoidDevicesImage, alt: 'Supervoid TV Devices', active: false },
+      {
+        id: 3,
+        src: bornYesterdayBakeryDevicesImage,
+        alt: 'Born Yesterday Bakery Devices',
+        active: false,
+      },
+      { id: 4, src: robbyWebbDevicesImage, alt: 'Robby Webb Devices', active: false },
+    ]}
   >
     <h2>No Nonsense, Just Great Websites</h2>
     <p>
@@ -17,7 +29,7 @@ import project from '../../assets/moonbelly-screens.png'
     </p>
     <p>Let us handle the hard stuff so that you can focus on what you do best.</p>
     <SiteCta class="cta" text="View Portfolio" url="/#portfolio" />
-  </ImageWithTextContent>
+  </CarouselWithTextContent>
 </section>
 
 <style>
