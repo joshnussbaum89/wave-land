@@ -3,7 +3,7 @@ import { Picture } from 'astro:assets'
 import Icon from 'astro-icon'
 import SectionHeader from '../text/SectionHeader.astro'
 import SiteCta from '../SiteCta.astro'
-import joshWoods from '../../assets/josh-woods.webp'
+import headshot from '../../assets/headshot.png'
 ---
 
 <section id="about" class="about site-section">
@@ -33,11 +33,7 @@ import joshWoods from '../../assets/josh-woods.webp'
   </div>
   <div class="about-content">
     <Icon name="curved-text" />
-    <Picture
-      src={joshWoods}
-      formats={['avif', 'webp']}
-      alt="Josh Nussbaum on a tree stump on a hiking trail"
-    />
+    <Picture src={headshot} formats={['avif', 'webp']} alt="Josh Nussbaum eating a bowl of ramen" />
     <div class="about-content-info">
       <h3>Services</h3>
       <ul class="services">
