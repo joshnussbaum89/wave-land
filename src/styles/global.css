@@ -20,9 +20,11 @@
   --size-xxl: 3.815rem;
 
   /* Colors */
+  --color-black: oklch(0% 0 0);
+  --color-white: oklch(98.38% 0.0089 289.94);
 
-  --color-background: oklch(0% 0 0);
-  --color-foreground: oklch(98.38% 0.0089 289.94);
+  --color-background: var(--color-black);
+  --color-foreground: var(--color-white);
   --color-foreground-transparent: oklch(98.38% 0.007935771087350203 286.25295319390017 / 85%);
 
   --color-primary-100: oklch(86.32% 0.0848 297.53);
@@ -52,8 +54,11 @@
 
 @supports not (color: oklch(0%, 0, 0)) {
   :root {
-    --color-background: #000000;
-    --color-foreground: #f9f9ff;
+    --color-black: #000000;
+    --color-white: #f9f9ff;
+
+    --color-background: var(--color-black);
+    --color-foreground: var(--color-white);
     --color-foreground-transparent: #f9f9ffd9;
 
     --color-primary-100: #d7c8ff;
@@ -316,22 +321,6 @@ main {
   }
   100% {
     box-shadow: none;
-  }
-}
-
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-0.5rem);
-  }
-  60% {
-    transform: translateY(-0.25rem);
   }
 }
 

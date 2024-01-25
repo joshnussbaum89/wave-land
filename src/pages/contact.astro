@@ -77,6 +77,19 @@ import Layout from '../layouts/Layout.astro'
           ></textarea>
           <label for="message">How can we help you? <span>*</span></label>
         </div>
+
+        <!-- Email Subscribe -->
+        <div class="form-field">
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              id="email-subscribe"
+              name="email-subscribe"
+              value="Email Subscribe"
+            />
+            <label for="email-subscribe">Sign up for our newsletter (optional)</label>
+          </div>
+        </div>
         <button class="site-cta" type="submit">Send Message</button>
       </form>
     </section>
@@ -124,14 +137,11 @@ import Layout from '../layouts/Layout.astro'
     flex-direction: column;
     gap: 0.5rem;
     margin-bottom: 2rem;
+    font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
 
     & label,
     & p {
       color: var(--color-grey-300);
-    }
-
-    & p {
-      font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
     }
 
     & textarea {
@@ -146,7 +156,6 @@ import Layout from '../layouts/Layout.astro'
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: var(--size-xs);
 
       input {
         accent-color: var(--color-primary-200);
@@ -166,7 +175,6 @@ import Layout from '../layouts/Layout.astro'
     & textarea {
       padding: 1rem 0.5rem;
       background-color: transparent;
-      font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
       border-top: none;
       border-right: none;
       border-left: none;
@@ -201,7 +209,6 @@ import Layout from '../layouts/Layout.astro'
       top: 48%;
       left: 0.5rem;
       transform: translateY(-50%);
-      font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
       transition: all var(--transition-normal);
     }
 

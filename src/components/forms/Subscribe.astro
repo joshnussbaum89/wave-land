@@ -1,11 +1,20 @@
 ---
-/**
- * TODO: Add light/dark mode props
- */
 import Icon from 'astro-icon'
+
+export interface Props {
+  formId: string | 'subscribe'
+  theme: 'light' | 'dark'
+}
+
+const { theme, formId } = Astro.props
 ---
 
-<form id="subscribe" class="subscribe" action="/api/subscribe" method="POST" autocomplete="off">
+<form
+  id={formId}
+  class:list={['subscribe', { light: theme === 'light', dark: theme === 'dark' }]}
+  method="POST"
+  autocomplete="off"
+>
   <div class="form-group">
     <div class="email-input">
       <input id="email" type="email" name="email" placeholder=" " required />
@@ -22,12 +31,22 @@ import Icon from 'astro-icon'
   .subscribe {
     position: relative;
 
+    &.dark {
+      --color-foreground: var(--color-white);
+      --color-success: var(--color-secondary-200);
+    }
+
+    &.light {
+      --color-foreground: var(--color-black);
+      --color-success: var(--color-primary-200);
+    }
+
     & .response-message {
       padding: 0.5rem;
       font-size: var(--size-xs);
 
       &.success {
-        color: var(--color-secondary-200);
+        color: var(--color-success);
       }
 
       &.error {
@@ -40,6 +59,7 @@ import Icon from 'astro-icon'
     position: relative;
     display: flex;
     align-items: center;
+    font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
 
     & .email-input,
     & input {
@@ -52,7 +72,7 @@ import Icon from 'astro-icon'
       background-color: transparent;
       border-top: none;
       border-right: none;
-      border-bottom: 1px solid var(--color-foreground);
+      border-bottom: 2px solid var(--color-foreground);
       border-left: none;
       border-radius: 0;
       outline: none;
@@ -97,22 +117,22 @@ import Icon from 'astro-icon'
   }
 </style>
 
-<script>
+<script define:vars={{ formId }}>
   document.addEventListener('astro:page-load', () => {
-    const form = document.querySelector('.subscribe') as HTMLFormElement
+    const form = document.querySelector(`#${formId}`)
     const responseMessage = form?.querySelector('.response-message')
 
     // Submit handler
-    async function submit(e: SubmitEvent) {
+    async function submit(e) {
       e.preventDefault()
 
       // Get form data
-      const formData = new FormData(e.target as HTMLFormElement)
+      const formData = new FormData(e.target)
 
       // Show loading message
-      responseMessage?.classList.remove('success')
-      responseMessage?.classList.remove('error')
-      responseMessage!.textContent = 'Loading...'
+      responseMessage.classList.remove('success')
+      responseMessage.classList.remove('error')
+      responseMessage.textContent = 'Loading...'
 
       // Send form data to API
       const response = await fetch('/api/subscribe/', {
@@ -124,16 +144,16 @@ import Icon from 'astro-icon'
 
       // Error subscribing
       if (data.error) {
-        responseMessage?.classList.remove('success')
-        responseMessage?.classList.add('error')
-        responseMessage!.textContent = data.error
+        responseMessage.classList.remove('success')
+        responseMessage.classList.add('error')
+        responseMessage.textContent = data.error
       }
 
       // Successful subscription
       if (data.message) {
-        responseMessage?.classList.remove('error')
-        responseMessage?.classList.add('success')
-        responseMessage!.textContent = data.message
+        responseMessage.classList.remove('error')
+        responseMessage.classList.add('success')
+        responseMessage.textContent = data.message
       }
 
       form?.reset()

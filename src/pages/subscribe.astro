@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro'
+import SubscribeForm from '../components/forms/Subscribe.astro'
+---
+
+<Layout
+  title="Wave Land Web | Subscribe"
+  description="Subscribe to our newsletter to get the latest news and updates."
+>
+  <header class="header">
+    <div class="header-info">
+      <h1>Subscribe</h1>
+      <p>Want updates from Wave Land?</p>
+      <p>Subscribe to our newsletter to get the latest news and updates.</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="subscribe" class="subscribe">
+      <SubscribeForm formId="subscribe-page" theme="light" />
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .header,
+  .contact,
+  .subscribe {
+    max-width: 650px;
+  }
+
+  .header-info h1 {
+    font-family: var(--font-body);
+    font-size: clamp(var(--size-sm), 4vw, var(--size-base));
+    color: var(--color-primary-200);
+  }
+
+  .header-info p {
+    /* Fix orphans */
+    max-width: 550px;
+    font-size: clamp(var(--size-sm), 4vw, var(--size-base));
+
+    &:nth-of-type(1) {
+      font-family: var(--font-heading);
+      font-size: clamp(var(--size-lg), 10vw, var(--size-xxl));
+      line-height: normal;
+      text-wrap: balance;
+    }
+  }
+</style>
