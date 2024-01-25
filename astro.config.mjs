@@ -22,5 +22,7 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
-  adapter: netlify(),
+  adapter: netlify({
+    imageCDN: false,
+  }),
 })
