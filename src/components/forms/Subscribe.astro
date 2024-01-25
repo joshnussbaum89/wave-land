@@ -17,8 +17,14 @@ const { theme, formId } = Astro.props
 >
   <div class="form-group">
     <div class="email-input">
-      <input id="email" type="email" name="email" placeholder=" " required />
-      <label for="email">Email Address</label>
+      <input
+        id={`${formId}-email`}
+        type="email"
+        name={`${formId}-email`}
+        placeholder=" "
+        required
+      />
+      <label for={`${formId}-email`}>Email Address</label>
     </div>
     <button type="submit" name="subscribe" aria-label="Subscribe">
       <Icon name="input-arrow" />

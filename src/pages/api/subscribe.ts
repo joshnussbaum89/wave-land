@@ -3,8 +3,11 @@ export const prerender = false
 import type { APIRoute } from 'astro'
 
 export const POST: APIRoute = async ({ request }) => {
+  // Email is the name of the input field in the form
   const data = await request.formData()
-  const email = data.get('email')
+  const email = data.get('footer-subscribe-email') || data.get('subscribe-page-email')
+
+  // Get environment variables
   const API_KEY = import.meta.env.MAILCHIMP_API_KEY
   const API_SERVER = import.meta.env.MAILCHIMP_API_SERVER
   const AUDIENCE_ID = import.meta.env.MAILCHIMP_AUDIENCE_ID
