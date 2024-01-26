@@ -2,7 +2,7 @@
 import { Picture } from 'astro:assets'
 import { getCollection } from 'astro:content'
 import Layout from '../layouts/Layout.astro'
-import BlogCard from '../components/blog/BlogCard.astro'
+import RecentPostsContainer from '../components/blog/RecentPostsContainer.astro'
 
 const allPosts = await getCollection('blog')
 const sortedPosts = allPosts.sort((a, b) => +b.data.id - +a.data.id)
@@ -51,19 +51,7 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
           <p>{truncatedDescriptionText}</p>
         </div>
       </article>
-      <div class="recent-posts-container">
-        {
-          recentPosts.map((post) => (
-            <BlogCard
-              title={post.data.title}
-              published={post.data.published}
-              slug={`/blog/${post.slug}`}
-              image={post.data.image}
-              imageAlt={post.data.imageAlt}
-            />
-          ))
-        }
-      </div>
+      <RecentPostsContainer posts={recentPosts} />
     </section>
   </main>
 </Layout>
@@ -87,7 +75,7 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
   }
 
   .blog-container {
-    max-width: 1100px;
+    max-width: var(--max-width-medium);
 
     & a {
       transition: all var(--transition-normal);
@@ -100,12 +88,19 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
     a:has(img) {
       display: block;
       max-height: 350px;
+      border-radius: var(--border-radius-image);
+      overflow: hidden;
     }
 
     & img {
       height: 100%;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: var(--border-radius-image);
+      transition: all var(--transition-normal);
+
+      &:hover {
+        transform: scale(1.01);
+      }
     }
   }
 
@@ -151,18 +146,6 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
     & p {
       color: var(--color-grey-300);
       font-size: var(--size-xs);
-    }
-  }
-
-  .recent-posts-container {
-    width: 100%;
-    display: grid;
-    grid-gap: 2rem;
-
-    @media (min-width: 768px) {
-      & {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      }
     }
   }
 </style>

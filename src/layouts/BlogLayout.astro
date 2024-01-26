@@ -16,7 +16,7 @@ const { frontmatter } = Astro.props
 
 <style is:inline>
   .blog-layout {
-    max-width: 800px;
+    max-width: var(--max-width-small);
     text-align: left;
 
     & header {
@@ -41,7 +41,7 @@ const { frontmatter } = Astro.props
     & pre {
       margin: 2rem auto;
       padding: 1rem;
-      border-radius: 10px;
+      border-radius: var(--border-radius-image);
     }
 
     @media (min-width: 768px) {
@@ -53,7 +53,7 @@ const { frontmatter } = Astro.props
 
     & img {
       margin: 2rem auto;
-      border-radius: 10px;
+      border-radius: var(--border-radius-image);
     }
 
     @media (min-width: 768px) {

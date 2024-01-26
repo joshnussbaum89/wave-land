@@ -2,7 +2,7 @@
 const currentPath = Astro.url.pathname
 ---
 
-<div id="mobile-nav" class="mobile-nav" data-current-url={currentPath}>
+<div id="mobile-nav" class="mobile-nav">
   <button id="hamburger" class="hamburger" aria-expanded="false">
     <div class="top"></div>
     <div class="middle"></div>
@@ -10,9 +10,17 @@ const currentPath = Astro.url.pathname
   </button>
   <div class="mobile-nav-overlay">
     <ul>
-      <li><a href="/#portfolio" aria-label="Portfolio">Portfolio</a></li>
-      <li><a href="/blog" aria-label="Blog">Blog</a></li>
-      <li><a href="/contact" aria-label="Contact">Contact</a></li>
+      <li>
+        <a href="/#portfolio" aria-label="Portfolio">Portfolio</a>
+      </li>
+      <li>
+        <a href="/blog" aria-selected={currentPath.includes('/blog')} aria-label="Blog">Blog</a>
+      </li>
+      <li>
+        <a href="/contact" aria-selected={currentPath.includes('/contact')} aria-label="Contact"
+          >Contact</a
+        >
+      </li>
     </ul>
   </div>
 </div>
@@ -142,14 +150,6 @@ const currentPath = Astro.url.pathname
   }
 
   .mobile-nav-overlay li a:hover {
-    color: var(--color-primary-200);
-  }
-
-  /* Active link styling */
-  .mobile-nav[data-current-url='/'] a[aria-label='Home'],
-  .mobile-nav[data-current-url^='/pricing'] a[aria-label='Pricing'],
-  .mobile-nav[data-current-url^='/blog'] a[aria-label='Blog'],
-  .mobile-nav[data-current-url^='/contact'] a[aria-label='Contact'] {
     color: var(--color-primary-200);
   }
 </style>
