@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 import SectionHeader from '../text/SectionHeader.astro'
 import RecentPostsContainer from '../blog/RecentPostsContainer.astro'
+import SiteCta from '../SiteCta.astro'
 
 const allPosts = await getCollection('blog')
 const sortedPosts = allPosts.sort((a, b) => +b.data.id - +a.data.id)
@@ -11,4 +12,18 @@ const recentPosts = sortedPosts.slice(0, 3)
 <section id="recent-posts" class="recent-posts">
   <SectionHeader text="Recent Posts" />
   <RecentPostsContainer posts={recentPosts} />
+  <SiteCta text="Read More" url="/blog" class="site-cta-custom" />
 </section>
+
+<style>
+  .recent-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: var(--max-width-medium);
+
+    & .site-cta-custom {
+      margin-top: 3rem;
+    }
+  }
+</style>

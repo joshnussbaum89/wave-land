@@ -24,16 +24,10 @@ const { slug, title, published, image, imageAlt } = Astro.props
 
 <style>
   .card {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
-
-    @media (min-width: 768px) {
-      & {
-        grid-template-columns: 1fr;
-      }
-    }
 
     & a {
       display: block;

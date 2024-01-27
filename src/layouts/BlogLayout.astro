@@ -67,6 +67,10 @@ const { frontmatter } = Astro.props
       margin-left: initial;
     }
 
+    & h2 {
+      text-decoration: underline 2px var(--color-primary-200);
+    }
+
     & h2,
     & h3 {
       margin: 3rem 0 1rem;
@@ -86,7 +90,7 @@ const { frontmatter } = Astro.props
 
     & ul,
     & ol {
-      margin-bottom: 2rem;
+      padding-inline-start: 3rem;
     }
 
     & li {
@@ -115,6 +119,10 @@ const { frontmatter } = Astro.props
 
     & em {
       font-style: italic;
+    }
+
+    & strong {
+      font-weight: bold;
     }
 
     & p code {

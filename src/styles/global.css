@@ -162,7 +162,9 @@ a[aria-selected='true'] {
 }
 
 p,
-pre {
+pre,
+ul,
+ol {
   font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
 }
 
@@ -205,8 +207,9 @@ main {
 .tag {
   display: inline-block;
   padding: 0.5rem 1rem;
-  text-transform: uppercase;
+  font-size: var(--size-xs);
   font-weight: 400;
+  text-transform: uppercase;
   color: var(--color-primary-200);
   background-color: var(--color-primary-100);
   border-radius: 3rem;
