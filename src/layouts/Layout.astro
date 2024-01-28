@@ -1,8 +1,10 @@
 ---
 import { ViewTransitions } from 'astro:transitions'
 import Scrim from '../components/Scrim.astro'
+import HeroImage from '../components/HeroImage.astro'
 import Navigation from '../components/navigation/Navigation.astro'
 import Footer from '../components/sections/Footer.astro'
+import mountainsImage from '../assets/mountains.jpg'
 import '../styles/global.css'
 
 export interface Props {
@@ -73,6 +75,7 @@ const socialImageURL = new URL(socialImage || '/images/gradient.jpg', canonicalU
   <body>
     <Scrim />
     <div class="site-wrapper">
+      {Astro.url.pathname === '/' ? <HeroImage src={mountainsImage} alt="mountains" /> : null}
       <Navigation />
       <slot />
     </div>

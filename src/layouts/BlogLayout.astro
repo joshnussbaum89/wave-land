@@ -68,7 +68,9 @@ const { frontmatter } = Astro.props
     }
 
     & h2 {
-      text-decoration: underline 2px var(--color-primary-200);
+      text-decoration: underline;
+      text-decoration-color: var(--color-primary-200);
+      text-decoration-thickness: 2px;
     }
 
     & h2,

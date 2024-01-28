@@ -1,0 +1,28 @@
+---
+import { Picture } from 'astro:assets'
+
+export interface Props {
+  src: ImageMetadata
+  alt: string
+}
+
+const { src, alt } = Astro.props
+---
+
+<Picture src={src} alt={alt} formats={['avif', 'webp']} class="hero-image" />
+
+<style>
+  .hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.5;
+    filter: contrast(200%);
+
+    /* fade bottom */
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  }
+</style>

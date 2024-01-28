@@ -17,8 +17,23 @@ import SiteCta from '../SiteCta.astro'
     margin: 0 auto;
   }
 
-  .header-info p {
+  & p {
+    position: relative;
     margin-bottom: 1rem;
     font-size: clamp(var(--size-sm), 4vw, var(--size-lg));
+
+    &::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background: var(--color-white);
+      opacity: 0.75;
+      border-radius: var(--border-radius-image);
+      filter: blur(0.5rem);
+    }
   }
 </style>

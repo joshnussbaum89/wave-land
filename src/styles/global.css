@@ -235,6 +235,7 @@ main {
   background-color: var(--color-foreground);
   border-radius: 1rem;
   z-index: 1;
+  overflow: hidden;
 
   /* Adjust bottom margin to reveal footer on tablets and larger */
   @media (min-width: 768px) {
