@@ -157,7 +157,7 @@ a {
   text-decoration: none;
 }
 
-a[aria-selected='true'] {
+a[aria-current='true'] {
   color: var(--color-primary-200);
 }
 

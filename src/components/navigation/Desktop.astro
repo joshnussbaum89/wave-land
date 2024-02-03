@@ -6,10 +6,10 @@ const currentPath = Astro.url.pathname
   <ul>
     <li><a href="/#portfolio" aria-label="Portfolio">Portfolio</a></li>
     <li>
-      <a href="/blog" aria-selected={currentPath.includes('/blog')} aria-label="Blog">Blog</a>
+      <a href="/blog" aria-current={currentPath.includes('/blog')} aria-label="Blog">Blog</a>
     </li>
     <li>
-      <a href="/contact" aria-selected={currentPath.includes('/contact')} aria-label="Contact"
+      <a href="/contact" aria-current={currentPath.includes('/contact')} aria-label="Contact"
         >Contact</a
       >
     </li>
