@@ -201,7 +201,12 @@ const projects = [
             {project.caseStudy.map((section) => {
               return (
                 <div class="modal-section">
-                  <Picture src={section.image} formats={['avif', 'webp']} alt={project.alt} />
+                  <Picture
+                    src={section.image}
+                    formats={['avif', 'webp']}
+                    alt={project.alt}
+                    loading="eager"
+                  />
                   <div class="modal-info">
                     <h4>{section.title}</h4>
                     <p>{section.description}</p>
