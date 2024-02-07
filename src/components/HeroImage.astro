@@ -9,7 +9,14 @@ export interface Props {
 const { src, alt } = Astro.props
 ---
 
-<Picture src={src} alt={alt} formats={['avif', 'webp']} class="hero-image" loading="eager" />
+<Picture
+  src={src}
+  alt={alt}
+  formats={['avif', 'webp']}
+  class="hero-image"
+  loading="eager"
+  quality={50}
+/>
 
 <style>
   .hero-image {
