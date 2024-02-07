@@ -1,8 +1,10 @@
-function handleActiveSiteSectionsOnScroll() {
+/**
+ * Fade in sections with the class `aos-fade` when they come into view
+ */
+function handleSectionFadeOnScroll() {
   if (!window.IntersectionObserver) return console.log('IntersectionObserver not supported')
 
-  // Grab sections
-  const sections = document.querySelectorAll('.site-section') as NodeListOf<HTMLElement>
+  const sections = document.querySelectorAll('.aos-fade') as NodeListOf<HTMLElement>
 
   const options = {
     root: null,
@@ -22,5 +24,13 @@ function handleActiveSiteSectionsOnScroll() {
   sections.forEach((section) => observer.observe(section))
 }
 
-window.addEventListener('load', handleActiveSiteSectionsOnScroll)
-document.addEventListener('scroll', handleActiveSiteSectionsOnScroll)
+/**
+ * When page loads, fade in sections with the class `aol-fade`
+ */
+function handleSectionFadeOnLoad() {
+  const sections = document.querySelectorAll('.aol-fade') as NodeListOf<HTMLElement>
+  sections.forEach((section) => section.classList.add('active'))
+}
+
+document.addEventListener('scroll', handleSectionFadeOnScroll)
+document.addEventListener('astro:page-load', handleSectionFadeOnLoad)

@@ -152,7 +152,7 @@ const projects = [
 ]
 ---
 
-<section id="portfolio" class="portfolio site-section">
+<section id="portfolio" class="portfolio site-section aos-fade">
   <div class="portfolio-header">
     <SectionHeader text="Featured Work" class="title" />
     <div class="portfolio-header-info desktop">
@@ -167,7 +167,7 @@ const projects = [
     {
       projects.map((project) => {
         return (
-          <article class="card">
+          <article class="card aos-fade">
             <span>0{`${project.id}`}</span>
             <h3>{project.title}</h3>
             <div class="card-image-container">

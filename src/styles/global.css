@@ -262,21 +262,11 @@ main {
   max-width: var(--max-width);
   height: auto;
   padding: 1rem 0;
-  opacity: 0;
-  transition: opacity var(--transition-long);
 
   @media (min-width: 768px) {
     & {
       padding: 2rem 0;
     }
-  }
-
-  &.active {
-    opacity: 1;
-  }
-
-  header& {
-    opacity: 1;
   }
 }
 
@@ -322,6 +312,16 @@ main {
 }
 
 /* Animations */
+
+.aos-fade,
+.aol-fade {
+  opacity: 0;
+  transition: opacity var(--transition-long);
+
+  &.active {
+    opacity: 1;
+  }
+}
 
 @keyframes glow {
   0% {

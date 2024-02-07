@@ -69,7 +69,7 @@ const { sections } = Astro.props
     let activeDotIndex = 0
     let currentDotIndex = 0
 
-    function handleActiveNavigationDotStyling(element: HTMLElement | null) {
+    function styleActiveNavigationDot(element: HTMLElement | null) {
       // Prevent removing/adding class unnecessarily
       if (activeDotIndex === currentDotIndex) return
 
@@ -82,7 +82,7 @@ const { sections } = Astro.props
       currentDotIndex = activeDotIndex
     }
 
-    function handleActiveElementsOnScroll() {
+    function handleNavigationDotsOnScroll() {
       if (!window.IntersectionObserver) return console.log('IntersectionObserver not supported')
 
       const sections = [...document.querySelectorAll('.site-section')]
@@ -105,11 +105,9 @@ const { sections } = Astro.props
 
       sections.forEach((section) => observer.observe(section))
 
-      handleActiveNavigationDotStyling(
-        document.querySelector(`.dot[data-index="${activeDotIndex}"]`)
-      )
+      styleActiveNavigationDot(document.querySelector(`.dot[data-index="${activeDotIndex}"]`))
     }
 
-    document.addEventListener('scroll', handleActiveElementsOnScroll)
+    document.addEventListener('scroll', handleNavigationDotsOnScroll)
   })
 </script>

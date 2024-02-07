@@ -9,7 +9,7 @@ const sortedPosts = allPosts.sort((a, b) => +b.data.id - +a.data.id)
 const recentPosts = sortedPosts.slice(0, 3)
 ---
 
-<section id="recent-posts" class="recent-posts">
+<section id="recent-posts" class="recent-posts aos-fade">
   <SectionHeader text="Recent Posts" />
   <RecentPostsContainer posts={recentPosts} />
   <SiteCta text="View All Posts" url="/blog" class="site-cta-custom" />
