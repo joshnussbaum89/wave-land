@@ -70,6 +70,18 @@ const socialImageURL = new URL(socialImage || '/images/gradient.jpg', canonicalU
     <!-- Animations -->
     <ViewTransitions />
     <script src="../util/section-animations.ts"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QNFD43JPLL"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+
+      gtag('config', 'G-QNFD43JPLL')
+    </script>
   </head>
 
   <body>
