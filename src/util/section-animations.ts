@@ -6,22 +6,24 @@ function handleSectionFadeOnScroll() {
 
   const sections = document.querySelectorAll('.aos-fade') as NodeListOf<HTMLElement>
 
-  const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1,
+  if (sections.length !== 0) {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1,
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const section = entry.target as HTMLElement
+          section.classList.add('active')
+        }
+      })
+    }, options)
+
+    sections.forEach((section) => observer.observe(section))
   }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const section = entry.target as HTMLElement
-        section.classList.add('active')
-      }
-    })
-  }, options)
-
-  sections.forEach((section) => observer.observe(section))
 }
 
 /**
@@ -32,5 +34,11 @@ function handleSectionFadeOnLoad() {
   sections.forEach((section) => section.classList.add('active'))
 }
 
-document.addEventListener('scroll', handleSectionFadeOnScroll)
-document.addEventListener('astro:page-load', handleSectionFadeOnLoad)
+// On page load
+document.addEventListener('astro:page-load', () => {
+  // Fade in sections on load
+  handleSectionFadeOnLoad()
+
+  // Fade in sections on scroll
+  document.addEventListener('scroll', handleSectionFadeOnScroll)
+})
