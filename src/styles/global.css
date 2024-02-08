@@ -35,9 +35,8 @@
   --color-secondary-200: oklch(93.52% 0.1078 175.63);
   --color-error: oklch(59.3% 0.25 30.06);
 
-  --color-grey-100: oklch(88.53% 0 0);
-  --color-grey-200: oklch(77.31% 0 0);
-  --color-grey-300: oklch(61.67% 0 0);
+  --color-grey-100: oklch(77.31% 0 0);
+  --color-grey-200: oklch(61.67% 0 0);
   --color-grey-transparent: oklch(38.67% 0 0 / 10.2%);
 
   /* Shadows */
@@ -71,9 +70,8 @@
     --color-secondary-200: #a2ffe7;
     --color-error: #ea1400;
 
-    --color-grey-100: #d9d9d9;
-    --color-grey-200: #b5b5b5;
-    --color-grey-300: #858585;
+    --color-grey-100: #b5b5b5;
+    --color-grey-200: #858585;
     --color-grey-transparent: #4444441a;
   }
 }
