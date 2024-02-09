@@ -52,7 +52,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   // If everything worked, return a success message
   return new Response(
-    JSON.stringify({ message: `Email address ${email} was successfully subscribed 🌊` }),
+    JSON.stringify({ message: `Email address ${email} was successfully subscribed` }),
     {
       status: 200,
     }

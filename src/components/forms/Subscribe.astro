@@ -39,21 +39,15 @@ const { theme, formId } = Astro.props
 
     &.dark {
       --color-foreground: var(--color-white);
-      --color-success: var(--color-secondary-200);
     }
 
     &.light {
       --color-foreground: var(--color-black);
-      --color-success: var(--color-primary-200);
     }
 
     & .response-message {
       padding: 0.5rem;
       font-size: var(--size-xs);
-
-      &.success {
-        color: var(--color-success);
-      }
 
       &.error {
         color: var(--color-error);
@@ -159,7 +153,7 @@ const { theme, formId } = Astro.props
       if (data.message) {
         responseMessage.classList.remove('error')
         responseMessage.classList.add('success')
-        responseMessage.textContent = data.message
+        responseMessage.innerHTML = `${data.message}. Click <a href="/files/website-audit-checklist.pdf" class="site-link" aria-label="download your free Website Audit Checklist" download>here</a> to download your free Website Audit Checklist 🌊`
       }
 
       form?.reset()
