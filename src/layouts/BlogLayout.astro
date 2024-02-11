@@ -91,12 +91,22 @@ const { frontmatter } = Astro.props
     }
 
     & ul,
-    & ol {
-      padding-inline-start: 3rem;
+    & ol,
+    & p {
+      margin-bottom: 1rem;
     }
 
-    & li {
-      margin-bottom: 1rem;
+    @media (min-width: 768px) {
+      & ul,
+      & ol,
+      & p {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    & ul,
+    & ol {
+      padding-inline-start: 3rem;
     }
 
     & ul li {
@@ -107,16 +117,12 @@ const { frontmatter } = Astro.props
       list-style-type: decimal;
     }
 
-    & p,
-    & li {
-      margin-bottom: 1rem;
-    }
-
-    @media (min-width: 768px) {
-      & p,
-      & li {
-        margin-bottom: 1.5rem;
-      }
+    & p code {
+      padding: 0.1rem 0.3rem 0.2rem;
+      white-space: nowrap;
+      box-decoration-break: clone;
+      background: var(--color-grey-transparent);
+      border-radius: 0.25rem;
     }
 
     & em {
@@ -125,14 +131,6 @@ const { frontmatter } = Astro.props
 
     & strong {
       font-weight: bold;
-    }
-
-    & p code {
-      padding: 0.1rem 0.3rem 0.2rem;
-      white-space: nowrap;
-      box-decoration-break: clone;
-      background: var(--color-grey-transparent);
-      border-radius: 0.25rem;
     }
   }
 </style>
