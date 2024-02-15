@@ -1,4 +1,5 @@
 ---
+import SiteCta from '../components/SiteCta.astro'
 import Layout from './Layout.astro'
 
 const { frontmatter } = Astro.props
@@ -11,6 +12,7 @@ const { frontmatter } = Astro.props
 >
   <main id="blog-layout" class="blog-layout">
     <slot />
+    <SiteCta class="site-cta-custom" url="/blog" text="← Back to blog" />
   </main>
 </Layout>
 
@@ -131,6 +133,11 @@ const { frontmatter } = Astro.props
 
     & strong {
       font-weight: bold;
+    }
+
+    .site-cta-custom {
+      margin-top: 4rem;
+      font-size: clamp(var(--size-sm), 4vw, var(--size-base));
     }
   }
 </style>
