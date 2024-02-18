@@ -41,6 +41,7 @@ const truncatedDescriptionText = createEllipsisText(newestPost!.data.description
             src={newestPost!.data.image}
             formats={['avif', 'webp']}
             alt={newestPost!.data.imageAlt}
+            loading="eager"
           />
         </a>
         <div class="newest-post-info">
