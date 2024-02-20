@@ -79,14 +79,35 @@ const { images, class: className } = Astro.props
 </style>
 
 <script>
-  setInterval(() => {
-    const allImages = document.querySelectorAll('.carousel-image')
-    const activeImage = document.querySelector('.carousel-image.active')
-    const activeImageId = parseInt(activeImage?.getAttribute('data-id') || '1')
-    const nextImageId = activeImageId === allImages.length ? 1 : activeImageId + 1
-    const nextImage = document.querySelector(`.carousel-image[data-id="${nextImageId}"]`)
+  /**
+   * Animate the carousel by changing the active image every 4 seconds
+   */
+  function animateCarousel() {
+    const animation = setInterval(() => {
+      const allImages = document.querySelectorAll('.carousel-image')
+      const activeImage = document.querySelector('.carousel-image.active')
+      const activeImageId = parseInt(activeImage?.getAttribute('data-id') || '1')
+      const nextImageId = activeImageId === allImages.length ? 1 : activeImageId + 1
+      const nextImage = document.querySelector(`.carousel-image[data-id="${nextImageId}"]`)
 
-    activeImage?.classList.remove('active')
-    nextImage?.classList.add('active')
-  }, 4000)
+      activeImage?.classList.remove('active')
+      nextImage?.classList.add('active')
+    }, 4000)
+
+    document.addEventListener(
+      'astro:page-load',
+      () => {
+        clearInterval(animation)
+      },
+      { once: true }
+    )
+  }
+
+  document.addEventListener(
+    'astro:page-load',
+    () => {
+      animateCarousel()
+    },
+    { once: true }
+  )
 </script>

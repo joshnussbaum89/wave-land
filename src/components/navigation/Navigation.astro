@@ -2,10 +2,13 @@
 import Icon from 'astro-icon'
 import Desktop from './Desktop.astro'
 import Mobile from './Mobile.astro'
+
+// TODO: can we avoid reloading the page when clicking the logo?
+// The issue is the RotatingTitles component - animation breaks on home page reload
 ---
 
 <nav>
-  <a href="/" class="logo" title="Wave Land Web" aria-label="Wave Land Web">
+  <a href="/" class="logo" title="Wave Land Web" aria-label="Wave Land Web" data-astro-reload>
     <Icon name="logo" />
   </a>
   <Desktop />
