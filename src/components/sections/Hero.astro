@@ -20,8 +20,9 @@ import SiteCta from '../SiteCta.astro'
 
   & p {
     position: relative;
+    max-width: 260px;
     margin-bottom: 1rem;
-    font-size: clamp(var(--size-sm), 4vw, var(--size-lg));
+    font-size: var(--size-sm);
 
     &::before {
       position: absolute;
@@ -35,6 +36,13 @@ import SiteCta from '../SiteCta.astro'
       opacity: 0.75;
       border-radius: var(--border-radius-image);
       filter: blur(0.5rem);
+    }
+
+    @media (min-width: 768px) {
+      & {
+        max-width: 680px;
+        font-size: var(--size-lg);
+      }
     }
   }
 </style>
