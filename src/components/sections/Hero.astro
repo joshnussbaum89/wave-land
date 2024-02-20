@@ -38,6 +38,13 @@ import SiteCta from '../SiteCta.astro'
       filter: blur(0.5rem);
     }
 
+    @media (min-width: 576px) {
+      & {
+        max-width: 450px;
+        font-size: var(--size-base);
+      }
+    }
+
     @media (min-width: 768px) {
       & {
         max-width: 680px;
