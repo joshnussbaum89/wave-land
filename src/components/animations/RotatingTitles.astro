@@ -2,14 +2,14 @@
 const URL = Astro.url.pathname
 ---
 
-<span class="titles">
-  <span class="active">Dream</span>
+<span class="titles-container">
+  <span>Dream</span>
   <span>Build</span>
   <span>Grow</span>
 </span>
 
 <style>
-  .titles span {
+  .titles-container span {
     display: none;
     width: clamp(80px, 20vw, 150px);
     padding: 0.2rem;
@@ -20,19 +20,19 @@ const URL = Astro.url.pathname
     animation: fadeIn 4s 0s infinite;
   }
 
-  .titles span.active {
+  .titles-container span.active {
     display: inline-block;
   }
 
-  .titles span:nth-of-type(1) {
+  .titles-container span:nth-of-type(1) {
     background-color: var(--color-secondary-200);
   }
 
-  .titles span:nth-of-type(2) {
+  .titles-container span:nth-of-type(2) {
     background-color: var(--color-white);
   }
 
-  .titles span:nth-of-type(3) {
+  .titles-container span:nth-of-type(3) {
     color: var(--color-white);
     background-color: var(--color-primary-200);
     border-color: var(--color-white);
@@ -63,22 +63,28 @@ const URL = Astro.url.pathname
    * Animate the titles on the home page by fading them in and out
    */
   function animateTitles() {
-    const titles = document.querySelectorAll('.titles span')
+    const titles = document.querySelectorAll('.titles-container span')
     let index = 0
+
+    // init the first title when the page is loaded
+    // causes a bit of layout shift, but better than title flickering
+    titles[index].classList.add('active')
 
     const animation = setInterval(() => {
       titles[index].classList.remove('active')
 
+      // Reset the index when it reaches the end of the array
       if (index === titles.length - 1) {
         index = 0
       } else {
         index++
       }
 
+      // Add the active class to the next title
       titles[index].classList.add('active')
     }, 4000)
 
-    // Clear the interval when the page is unloaded
+    // Stop the animation when the page is unloaded
     document.addEventListener(
       'astro:page-load',
       () => {
@@ -90,6 +96,7 @@ const URL = Astro.url.pathname
     )
   }
 
+  // Start the animation when the page is loaded
   document.addEventListener(
     'astro:page-load',
     () => {
