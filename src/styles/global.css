@@ -127,7 +127,6 @@ h2,
 h3,
 h4 {
   font-family: var(--font-heading);
-  letter-spacing: 2px;
   line-height: normal;
 
   /* Experimental, but fallback is default styling */
