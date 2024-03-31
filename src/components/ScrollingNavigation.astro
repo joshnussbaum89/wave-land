@@ -6,7 +6,7 @@ export interface Props {
 const { sections } = Astro.props
 ---
 
-<div class="scrolling-navigation">
+<div class="scrolling-navigation aos-fade">
   <div class="scrolling-navigation-dots">
     {
       sections?.map((section, index) => (
@@ -35,6 +35,10 @@ const { sections } = Astro.props
     .scrolling-navigation {
       right: 3rem;
       bottom: 4rem;
+
+      /* Overwrite aos-fade for desktop only */
+      visibility: visible;
+      opacity: 1;
     }
   }
 
