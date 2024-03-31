@@ -7,12 +7,12 @@ import RotatingTitles from '../animations/RotatingTitles.astro'
 <header id="hero" class="hero site-section">
   <div class="header-info aol-fade">
     <Icon name="title" />
+    <p>custom web development | digital strategy</p>
     <p>
-      We help <RotatingTitles /> build meaningful connections with personalized websites that foster
-      digital growth without tech stress
+      We help <RotatingTitles /> foster meaningful connections with stress-free, custom websites
     </p>
     <SiteCta
-      text="Free Strategy Call"
+      text="Free Strategy Call →"
       url="https://calendly.com/wavelandweb/15-min-meeting?month=2024-04"
       openInNewTab={true}
     />
@@ -30,8 +30,16 @@ import RotatingTitles from '../animations/RotatingTitles.astro'
 
     & p {
       position: relative;
-      margin-bottom: 1rem;
       font-size: clamp(var(--size-sm), 4vw, var(--size-base));
+      margin-bottom: clamp(1rem, 4vw, 1.5rem);
+
+      &:first-of-type {
+        font-size: clamp(var(--size-xxs), 3vw, var(--size-xs));
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        font-weight: 400;
+        color: var(--color-grey-200);
+      }
 
       &::before {
         position: absolute;
