@@ -3,39 +3,38 @@ const URL = Astro.url.pathname
 ---
 
 <span class="titles-container">
-  <span>Dream</span>
-  <span>Build</span>
-  <span>Grow</span>
+  <span>creatives</span>
+  <span>artists</span>
+  <span>entrepreneurs</span>
 </span>
 
 <style>
   .titles-container span {
     display: none;
-    width: clamp(80px, 20vw, 150px);
-    padding: 0.2rem;
-    text-align: center;
-    line-height: normal;
+    width: clamp(155px, 40vw, 190px);
+    padding: 0 0 0.15rem;
     border: 2px dashed var(--color-black);
-    border-radius: var(--border-radius-image);
+    border-radius: 3rem;
     animation: fadeIn 4s 0s infinite;
-  }
 
-  .titles-container span.active {
-    display: inline-block;
-  }
+    &.active {
+      display: inline-flex;
+      justify-content: center;
+    }
 
-  .titles-container span:nth-of-type(1) {
-    background-color: var(--color-secondary-200);
-  }
+    &:nth-of-type(1) {
+      background-color: var(--color-secondary-200);
+    }
 
-  .titles-container span:nth-of-type(2) {
-    background-color: var(--color-white);
-  }
+    &:nth-of-type(2) {
+      background-color: var(--color-white);
+    }
 
-  .titles-container span:nth-of-type(3) {
-    color: var(--color-white);
-    background-color: var(--color-primary-200);
-    border-color: var(--color-white);
+    &:nth-of-type(3) {
+      color: var(--color-white);
+      background-color: var(--color-primary-200);
+      border-color: var(--color-white);
+    }
   }
 
   @keyframes fadeIn {

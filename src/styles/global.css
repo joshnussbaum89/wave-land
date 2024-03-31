@@ -272,6 +272,7 @@ main {
   letter-spacing: 2px;
   color: var(--color-foreground);
   background-color: var(--color-background);
+  font-size: clamp(var(--size-sm), 5vw, 2rem);
   text-align: center;
   line-height: normal;
   border: 2px solid var(--color-background);

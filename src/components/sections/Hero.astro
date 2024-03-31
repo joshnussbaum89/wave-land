@@ -1,14 +1,21 @@
 ---
 import { Icon } from 'astro-icon'
-import RotatingTitles from '../../components/animations/RotatingTitles.astro'
 import SiteCta from '../SiteCta.astro'
+import RotatingTitles from '../animations/RotatingTitles.astro'
 ---
 
 <header id="hero" class="hero site-section">
   <div class="header-info aol-fade">
     <Icon name="title" />
-    <p>Web Development Studio Helping Creatives & Small Businesses <RotatingTitles /></p>
-    <SiteCta text="Create Your Website" url="/contact" />
+    <p>
+      We help <RotatingTitles /> build meaningful connections with personalized websites that foster
+      digital growth without tech stress
+    </p>
+    <SiteCta
+      text="Free Strategy Call"
+      url="https://calendly.com/wavelandweb/15-min-meeting?month=2024-04"
+      openInNewTab={true}
+    />
   </div>
 </header>
 
@@ -16,39 +23,28 @@ import SiteCta from '../SiteCta.astro'
   .hero {
     min-height: calc(100vh - 12rem);
     margin: 0 auto;
-  }
 
-  & p {
-    position: relative;
-    max-width: 260px;
-    margin-bottom: 1rem;
-    font-size: var(--size-sm);
-
-    &::before {
-      position: absolute;
-      content: '';
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      background: var(--color-white);
-      opacity: 0.75;
-      border-radius: var(--border-radius-image);
-      filter: blur(0.5rem);
+    & .header-info {
+      max-width: 40rem;
     }
 
-    @media (min-width: 576px) {
-      & {
-        max-width: 375px;
-        font-size: var(--size-base);
-      }
-    }
+    & p {
+      position: relative;
+      margin-bottom: 1rem;
+      font-size: clamp(var(--size-sm), 4vw, var(--size-base));
 
-    @media (min-width: 768px) {
-      & {
-        max-width: 680px;
-        font-size: var(--size-lg);
+      &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background: var(--color-white);
+        opacity: 0.75;
+        border-radius: var(--border-radius-image);
+        filter: blur(0.5rem);
       }
     }
   }
